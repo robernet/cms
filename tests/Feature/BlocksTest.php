@@ -43,7 +43,6 @@ class BlocksTest extends TestCase
             'key' => $this->block->key,
             'status' => $this->block->status,
         ]);
-
     }
 
     public function test_blocks_widgets_view()
@@ -91,9 +90,8 @@ class BlocksTest extends TestCase
                 'widget_width' => $this->widget->widget_width,
                 'content' => $this->widget->content,
                 'status' => $this->widget->status,
-                'block_id' => $this->widget->block_id
+                'block_id' => $this->widget->block_id,
             ]);
-
         }
 
         $this->assertTrue(true);
@@ -116,7 +114,7 @@ class BlocksTest extends TestCase
 
         if ($this->widget) {
             $widget_width = random_int(1, 6);
-            
+
             $response = $this->put('cms/blocks/' . $this->block->hashed_id . '/widgets/' . $this->widget->hashed_id, [
                 'title' => $this->widget->title,
                 'widget_width' => $widget_width,
@@ -130,7 +128,7 @@ class BlocksTest extends TestCase
                 'widget_width' => $widget_width,
                 'content' => $this->widget->content,
                 'status' => $this->widget->status,
-                'block_id' => $this->widget->block_id
+                'block_id' => $this->widget->block_id,
             ]);
         }
         $this->assertTrue(true);
@@ -151,7 +149,7 @@ class BlocksTest extends TestCase
                 'widget_order' => $this->widget->widget_order,
                 'widget_width' => $this->widget->widget_width,
                 'status' => $this->widget->status,
-                'block_id' => $this->widget->block_id
+                'block_id' => $this->widget->block_id,
             ]);
         }
         $this->assertTrue(true);

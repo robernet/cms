@@ -2,7 +2,6 @@
 
 namespace Corals\Modules\CMS\Services;
 
-
 use Corals\Foundation\Services\BaseServiceClass;
 
 class PageService extends BaseServiceClass
@@ -17,13 +16,12 @@ class PageService extends BaseServiceClass
             $page->clearMediaCollection('featured-image');
         }
 
-        if ($request->hasFile('featured_image') && !$request->has('clear')) {
+        if ($request->hasFile('featured_image') && ! $request->has('clear')) {
             $page->addMedia($request->file('featured_image'))
                 ->withCustomProperties(['root' => 'user_' . user()->hashed_id])
                 ->toMediaCollection('featured-image');
         }
 
         $page->categories()->sync($request->get('categories', []));
-
     }
 }

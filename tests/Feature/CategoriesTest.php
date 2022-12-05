@@ -40,7 +40,7 @@ class CategoriesTest extends TestCase
             'name' => $categories[$category],
             'slug' => $categories[$category],
             'belongs_to' => array_rand($this->belongs_to),
-            'status' => 'active'
+            'status' => 'active',
         ];
 
         $response = $this->post('cms/categories', $this->categoryRequest);
@@ -49,7 +49,7 @@ class CategoriesTest extends TestCase
             ['name', $this->categoryRequest['name']],
             ['slug', $this->categoryRequest['slug']],
             ['belongs_to', $this->categoryRequest['belongs_to'],
-            ['status', 'active']],
+            ['status', 'active'], ],
         ])->first();
 
         $response->assertDontSee('The given data was invalid')
@@ -59,7 +59,7 @@ class CategoriesTest extends TestCase
             'name' => $this->category->name,
             'slug' => $this->category->slug,
             'belongs_to' => $this->category->belongs_to,
-            'status'=>$this->category->status,
+            'status' => $this->category->status,
         ]);
     }
 
@@ -84,7 +84,7 @@ class CategoriesTest extends TestCase
                 'name' => $this->category->name,
                 'slug' => $this->category->slug,
                 'belongs_to' => $belong,
-                'status'=>$this->category->status,
+                'status' => $this->category->status,
             ]);
 
             $response->assertRedirect('cms/categories');
@@ -92,7 +92,7 @@ class CategoriesTest extends TestCase
                 'name' => $this->category->name,
                 'slug' => $this->category->slug,
                 'belongs_to' => $belong,
-                'status'=>$this->category->status,
+                'status' => $this->category->status,
             ]);
         }
 
@@ -113,7 +113,7 @@ class CategoriesTest extends TestCase
                 'name' => $this->category->name,
                 'slug' => $this->category->slug,
                 'belongs_to' => $this->category->belongs_to,
-                'status'=>$this->category->status,]);
+                'status' => $this->category->status,]);
         }
         $this->assertTrue(true);
     }

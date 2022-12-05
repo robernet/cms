@@ -191,8 +191,7 @@ class OpenGraph implements OpenGraphContract
         array $properties,
         $prefix = null,
         $ogPrefix = true
-    )
-    {
+    ) {
         $html = [];
 
         foreach ($properties as $property => $value) {
@@ -261,7 +260,7 @@ class OpenGraph implements OpenGraphContract
                 }
             } elseif ($key == 'url' && $value === null) {
                 $this->setUrl(app('url')->current());
-            } elseif (!empty($value) && !array_key_exists($key, $this->properties)) {
+            } elseif (! empty($value) && ! array_key_exists($key, $this->properties)) {
                 $this->addProperty($key, $value);
             }
         }
@@ -663,8 +662,7 @@ class OpenGraph implements OpenGraphContract
         $key = null,
         $attributes = [],
         $validKeys = []
-    )
-    {
+    ) {
         if (isset($this->properties['type']) && $this->properties['type'] == $type) {
             foreach ($attributes as $attribute => $value) {
                 if (in_array($attribute, $validKeys)) {
@@ -765,7 +763,7 @@ class OpenGraph implements OpenGraphContract
      */
     public function setDescription($description = null)
     {
-        return $this->addProperty('description', htmlentities($description,ENT_COMPAT, 'UTF-8'));
+        return $this->addProperty('description', htmlentities($description, ENT_COMPAT, 'UTF-8'));
     }
 
     /**

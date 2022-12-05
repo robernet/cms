@@ -8,12 +8,11 @@ use Spatie\Analytics\Period;
 
 class PageViewsWidget
 {
-
-    function __construct()
+    public function __construct()
     {
     }
 
-    function run($args)
+    public function run($args)
     {
         try {
             $analyticsData = Analytics::fetchTotalVisitorsAndPageViews(Period::days(30));
@@ -36,11 +35,8 @@ class PageViewsWidget
 
 
             return view('Corals::chart')->with(['chart' => $chart])->render();
-
-
         } catch (\Exception $e) {
             return $e->getMessage();
         }
     }
-
 }

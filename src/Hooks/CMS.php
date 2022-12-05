@@ -7,7 +7,7 @@ class CMS
     /**
      * CMS constructor.
      */
-    function __construct()
+    public function __construct()
     {
     }
 

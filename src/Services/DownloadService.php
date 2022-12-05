@@ -3,7 +3,7 @@
 namespace Corals\Modules\CMS\Services;
 
 use Corals\Foundation\Services\BaseServiceClass;
-use \Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class DownloadService extends BaseServiceClass
 {
@@ -16,7 +16,7 @@ class DownloadService extends BaseServiceClass
                 $model->addMedia($request->file("downloads.$index.file"))
                     ->withCustomProperties([
                         'root' => 'user_' . user()->hashed_id,
-                        'description' => $request->input("downloads.$index.description")
+                        'description' => $request->input("downloads.$index.description"),
                     ])->toMediaCollection($model->mediaCollectionName, 'secure_media');
             }
         }

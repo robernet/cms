@@ -2,7 +2,6 @@
 
 namespace Corals\Modules\CMS\database\seeds;
 
-use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class CMSMenusDatabaseSeeder extends Seeder
@@ -24,11 +23,12 @@ class CMSMenusDatabaseSeeder extends Seeder
             'icon' => 'fa fa-desktop',
             'target' => null,
             'roles' => '["1"]',
-            'order' => 0
+            'order' => 0,
         ]);
 
         // seed users children menu
-        \DB::table('menus')->insert([
+        \DB::table('menus')->insert(
+            [
                 [
                     'parent_id' => $cms_menu_id,
                     'key' => null,
@@ -39,7 +39,7 @@ class CMSMenusDatabaseSeeder extends Seeder
                     'icon' => 'fa fa-files-o',
                     'target' => null,
                     'roles' => '["1"]',
-                    'order' => 0
+                    'order' => 0,
                 ],
                 [
                     'parent_id' => $cms_menu_id,
@@ -51,7 +51,7 @@ class CMSMenusDatabaseSeeder extends Seeder
                     'icon' => 'fa fa-thumb-tack',
                     'target' => null,
                     'roles' => '["1"]',
-                    'order' => 0
+                    'order' => 0,
                 ],
                 [
                     'parent_id' => $cms_menu_id,
@@ -63,7 +63,7 @@ class CMSMenusDatabaseSeeder extends Seeder
                     'icon' => 'fa fa-folder-open',
                     'target' => null,
                     'roles' => '["1"]',
-                    'order' => 0
+                    'order' => 0,
                 ],
                 [
                     'parent_id' => $cms_menu_id,
@@ -75,7 +75,7 @@ class CMSMenusDatabaseSeeder extends Seeder
                     'icon' => 'fa fa-book',
                     'target' => null,
                     'roles' => '["1","2"]',
-                    'order' => 0
+                    'order' => 0,
                 ],
                 [
                     'parent_id' => $cms_menu_id,
@@ -87,7 +87,7 @@ class CMSMenusDatabaseSeeder extends Seeder
                     'icon' => 'fa fa-newspaper-o',
                     'target' => null,
                     'roles' => '["1"]',
-                    'order' => 0
+                    'order' => 0,
                 ],
                 [
                     'parent_id' => $cms_menu_id,
@@ -99,7 +99,7 @@ class CMSMenusDatabaseSeeder extends Seeder
                     'icon' => 'fa fa-question-circle-o',
                     'target' => null,
                     'roles' => '["1"]',
-                    'order' => 0
+                    'order' => 0,
                 ],
                 [
                     'parent_id' => $cms_menu_id,
@@ -111,7 +111,7 @@ class CMSMenusDatabaseSeeder extends Seeder
                     'icon' => 'fa-quote-left',
                     'target' => null,
                     'roles' => '["1"]',
-                    'order' => 0
+                    'order' => 0,
                 ],
                 [
                     'parent_id' => $cms_menu_id,
@@ -123,7 +123,7 @@ class CMSMenusDatabaseSeeder extends Seeder
                     'icon' => 'fa fa-arrow-circle-down',
                     'target' => null,
                     'roles' => '["1"]',
-                    'order' => 0
+                    'order' => 0,
                 ],
                 ['parent_id' => $cms_menu_id,
                     'key' => null,
@@ -134,7 +134,7 @@ class CMSMenusDatabaseSeeder extends Seeder
                     'icon' => 'fa fa-cube',
                     'target' => null,
                     'roles' => '["1"]',
-                    'order' => 0
+                    'order' => 0,
                 ],
             ]
         );

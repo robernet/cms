@@ -16,7 +16,9 @@ use Symfony\Component\Debug\Exception\FatalThrowableError;
 
 class Content extends BaseModel implements HasMedia, Feedable
 {
-    use PresentableTrait, LogsActivity, InteractsWithMedia ;
+    use PresentableTrait;
+    use LogsActivity;
+    use InteractsWithMedia ;
 
     protected $table = 'posts';
 
@@ -25,7 +27,7 @@ class Content extends BaseModel implements HasMedia, Feedable
         'private' => 'boolean',
         'internal' => 'boolean',
         'published_at' => 'date',
-        'extras' => 'array'
+        'extras' => 'array',
     ];
 
 
@@ -79,18 +81,26 @@ class Content extends BaseModel implements HasMedia, Feedable
 
         $content = $this->getAttributeValue('content');
 
-        $content = str_ireplace(array('<?php', '@php', '<?', '@endphp', '?>'), array('&lt;?php', '&lt;?PHP', '&lt;?', '&gt;?php', '?&gt;'), $content);
+        $content = str_ireplace(['<?php', '@php', '<?', '@endphp', '?>'], ['&lt;?php', '&lt;?PHP', '&lt;?', '&gt;?php', '?&gt;'], $content);
 
         $php = \Blade::compileString($content);
+
         try {
             eval('?' . '>' . $php);
         } catch (\Exception $e) {
-            while (ob_get_level() > $obLevel) ob_end_clean();
+            while (ob_get_level() > $obLevel) {
+                ob_end_clean();
+            }
+
             throw $e;
         } catch (\Throwable $e) {
-            while (ob_get_level() > $obLevel) ob_end_clean();
+            while (ob_get_level() > $obLevel) {
+                ob_end_clean();
+            }
+
             throw new FatalThrowableError($e);
         }
+
         return ob_get_clean();
     }
 
@@ -150,11 +160,9 @@ class Content extends BaseModel implements HasMedia, Feedable
     public function activeCategories()
     {
         $not_available_categories = \CMS::getNotAvailableCategories();
+
         return $this->belongsToMany(Category::class, 'category_post', 'post_id')->where('status', 'active')->whereNotIn('id', $not_available_categories);
-
-
     }
-
 
     public function toContentType()
     {

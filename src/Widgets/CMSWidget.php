@@ -2,21 +2,19 @@
 
 namespace Corals\Modules\CMS\Widgets;
 
-use Corals\Modules\CMS\Models\Post;
-use Corals\Modules\CMS\Models\Page;
 use Corals\Modules\CMS\Models\Category;
 use Corals\Modules\CMS\Models\News;
+use Corals\Modules\CMS\Models\Page;
+use Corals\Modules\CMS\Models\Post;
 
 class CMSWidget
 {
-
-    function __construct()
+    public function __construct()
     {
     }
 
-    function run($args)
+    public function run($args)
     {
-
         $pages = Page::count();
         $posts = Post::count();
         $news = News::count();
@@ -83,5 +81,4 @@ class CMSWidget
 
 ';
     }
-
 }

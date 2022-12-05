@@ -3,8 +3,8 @@
 namespace Corals\Modules\CMS\Policies;
 
 use Corals\Foundation\Policies\BasePolicy;
-use Corals\User\Models\User;
 use Corals\Modules\CMS\Models\Category;
+use Corals\User\Models\User;
 
 class CategoryPolicy extends BasePolicy
 {
@@ -19,6 +19,7 @@ class CategoryPolicy extends BasePolicy
         if ($user->can('CMS::category.view')) {
             return true;
         }
+
         return false;
     }
 
@@ -41,6 +42,7 @@ class CategoryPolicy extends BasePolicy
         if ($user->can('CMS::category.update')) {
             return true;
         }
+
         return false;
     }
 
@@ -54,7 +56,7 @@ class CategoryPolicy extends BasePolicy
         if ($user->can('CMS::category.delete')) {
             return true;
         }
+
         return false;
     }
-
 }

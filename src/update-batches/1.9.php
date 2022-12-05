@@ -2,9 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 
-if (!\Schema::hasTable('cms_blocks')) {
-
-
+if (! \Schema::hasTable('cms_blocks')) {
     \Schema::create('cms_blocks', function (Blueprint $table) {
         $table->increments('id');
         $table->string('name')->unique();
@@ -18,8 +16,7 @@ if (!\Schema::hasTable('cms_blocks')) {
     });
 }
 
-if (!\Schema::hasTable('cms_widgets')) {
-
+if (! \Schema::hasTable('cms_widgets')) {
     \Schema::create('cms_widgets', function (Blueprint $table) {
         $table->increments('id');
         $table->string('title')->nullable();
@@ -34,10 +31,8 @@ if (!\Schema::hasTable('cms_widgets')) {
 
         $table->timestamps();
 
-    $table->foreign('block_id')->references('id')->on('cms_blocks')->onDelete('cascade')->onUpdate('cascade');
-
+        $table->foreign('block_id')->references('id')->on('cms_blocks')->onDelete('cascade')->onUpdate('cascade');
     });
-
 }
 $cms_menu = \DB::table('menus')->where([
     'parent_id' => 1,// admin
@@ -46,7 +41,8 @@ $cms_menu = \DB::table('menus')->where([
 ])->first();
 $cms_menu_id = $cms_menu->id;
 
-\DB::table('menus')->insert([
+\DB::table('menus')->insert(
+    [
         [
             'parent_id' => $cms_menu_id,
             'key' => null,
@@ -57,7 +53,7 @@ $cms_menu_id = $cms_menu->id;
             'icon' => 'fa fa-cube',
             'target' => null,
             'roles' => '["1"]',
-            'order' => 0
+            'order' => 0,
         ],
     ]
 );
@@ -96,8 +92,9 @@ $cms_menu_id = $cms_menu->id;
     ],
 ]);
 
-\Corals\Modules\CMS\Models\Page::updateOrCreate(['slug' => 'faqs', 'type' => 'page'],
-    array(
+\Corals\Modules\CMS\Models\Page::updateOrCreate(
+    ['slug' => 'faqs', 'type' => 'page'],
+    [
         'title' => 'FAQs',
         'slug' => 'faqs',
         'meta_keywords' => 'faqs',
@@ -119,18 +116,19 @@ $cms_menu_id = $cms_menu->id;
         'type' => 'page',
         'template' => 'full',
         'author_id' => 1,
-        'deleted_at' => NULL,
+        'deleted_at' => null,
         'created_at' => '2017-11-16 11:56:34',
         'updated_at' => '2017-11-16 11:56:34',
-    ));
+    ]
+);
 
 $block = \Corals\Modules\CMS\Models\Block::updateOrCreate(['name' => 'Pre Footer Block', 'key' => 'pre-footer-block'], [
     'name' => 'Pre Footer Block',
     'key' => 'pre-footer-block',
 ]);
 
-$widgets = array(
-    array(
+$widgets = [
+    [
         'title' => 'Free Worldwide Shipping',
         'content' => '<div class="text-center mb-30"><img
                         class="d-block w-90 img-thumbnail rounded-circle mx-auto mb-3"
@@ -143,8 +141,8 @@ $widgets = array(
         'widget_width' => 3,
         'widget_order' => 0,
         'status' => 'active',
-    ),
-    array(
+    ],
+    [
         'title' => 'Money Back Guarantee',
         'content' => '<div class="text-center mb-30"><img
                         class="d-block w-90 img-thumbnail rounded-circle mx-auto mb-3"
@@ -157,9 +155,9 @@ $widgets = array(
         'widget_width' => 3,
         'widget_order' => 1,
         'status' => 'active',
-    ),
+    ],
 
-    array(
+    [
         'title' => '24/7 Customer Support',
         'content' => '<div class="text-center mb-30"><img
                         class="d-block w-90 img-thumbnail rounded-circle mx-auto mb-3"
@@ -173,8 +171,8 @@ $widgets = array(
         'widget_order' => 2,
         'status' => 'active',
 
-    ),
-    array(
+    ],
+    [
         'title' => 'Secure Online Payment',
         'content' => '<div class="text-center mb-30"><img
                         class="d-block w-90 img-thumbnail rounded-circle mx-auto mb-3"
@@ -188,12 +186,11 @@ $widgets = array(
         'widget_order' => 3,
         'status' => 'active',
 
-    ),
-);
+    ],
+];
 foreach ($widgets as $widget) {
     \Corals\Modules\CMS\Models\Widget::updateOrCreate(
         ['block_id' => $widget['block_id'], 'title' => $widget['title']],
         $widget
     );
 }
-

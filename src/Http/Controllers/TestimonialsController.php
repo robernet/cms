@@ -70,7 +70,6 @@ class TestimonialsController extends BaseController
      * @param Testimonial $testimonial
      * @return Testimonial
      */
-
     public function show(TestimonialRequest $request, Testimonial $testimonial)
     {
         return $testimonial;

@@ -23,7 +23,8 @@ class FaqTransformer extends BaseTransformer
     {
         $transformedArray = [
             'id' => $faq->id,
-            'checkbox' => $this->generateCheckboxElement($faq
+            'checkbox' => $this->generateCheckboxElement(
+                $faq
             ),
             'title' => \Str::limit($faq->title, 50),
             'published' => $faq->published ? '<i class="fa fa-check text-success"></i>' : '-',
@@ -31,7 +32,7 @@ class FaqTransformer extends BaseTransformer
             'categories' => formatArrayAsLabels($faq->categories->pluck('name'), 'success', '<i class="fa fa-folder-open"></i>'),
             'created_at' => format_date($faq->created_at),
             'updated_at' => format_date($faq->updated_at),
-            'action' => $this->actions($faq)
+            'action' => $this->actions($faq),
         ];
 
         return parent::transformResponse($transformedArray);

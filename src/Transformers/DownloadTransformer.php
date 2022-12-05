@@ -18,10 +18,8 @@ class DownloadTransformer extends BaseTransformer
      * @return array
      * @throws \Throwable
      */
-
     public function transform(Download $download)
     {
-
         $transformedArray = [
             'id' => $download->id,
             'title' => \Str::limit($download->title, 50),
@@ -30,7 +28,7 @@ class DownloadTransformer extends BaseTransformer
             'published_at' => $download->published ? format_date($download->published_at) : '-',
             'created_at' => format_date($download->created_at),
             'updated_at' => format_date($download->updated_at),
-            'action' => $this->actions($download)
+            'action' => $this->actions($download),
         ];
 
         return parent::transformResponse($transformedArray);
@@ -44,6 +42,7 @@ class DownloadTransformer extends BaseTransformer
             $files .= '<a href="' . url('cms/downloads/download/' . $file['hashed_id']) . '" 
                       target="_blank"> <i class="fa fa-arrow-circle-down fa-fw"></i> ' . $file['name'] . '</a>' . '</br>';
         }
+
         return $files;
     }
 }

@@ -9,8 +9,8 @@
 namespace Corals\Modules\CMS\Policies;
 
 use Corals\Foundation\Policies\BasePolicy;
-use Corals\User\Models\User;
 use Corals\Modules\CMS\Models\News;
+use Corals\User\Models\User;
 
 class NewsPolicy extends BasePolicy
 {
@@ -25,6 +25,7 @@ class NewsPolicy extends BasePolicy
         if ($user->can('CMS::news.view')) {
             return true;
         }
+
         return false;
     }
 
@@ -47,6 +48,7 @@ class NewsPolicy extends BasePolicy
         if ($user->can('CMS::news.update')) {
             return true;
         }
+
         return false;
     }
 
@@ -60,7 +62,7 @@ class NewsPolicy extends BasePolicy
         if ($user->can('CMS::news.delete')) {
             return true;
         }
+
         return false;
     }
-
 }

@@ -67,7 +67,7 @@ class TwitterCards implements TwitterCardsContract
                     $key = $prefix . ':' . $key;
                 endif;
 
-                $this->html[] = $this->makeTag($key, $value);
+            $this->html[] = $this->makeTag($key, $value);
             endif;
         endforeach;
     }
@@ -135,7 +135,7 @@ class TwitterCards implements TwitterCardsContract
      */
     public function setDescription($description)
     {
-        return $this->addValue('description', htmlentities($description,ENT_COMPAT, 'UTF-8'));
+        return $this->addValue('description', htmlentities($description, ENT_COMPAT, 'UTF-8'));
     }
 
     /**

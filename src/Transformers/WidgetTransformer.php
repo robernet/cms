@@ -31,7 +31,7 @@ class WidgetTransformer extends BaseTransformer
             'status' => formatStatusAsLabels($widget->status),
             'created_at' => format_date($widget->created_at),
             'updated_at' => format_date($widget->updated_at),
-            'action' => $this->actions($widget, [], $url)
+            'action' => $this->actions($widget, [], $url),
         ];
 
         return parent::transformResponse($transformedArray);

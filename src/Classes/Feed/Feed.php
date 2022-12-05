@@ -2,11 +2,11 @@
 
 namespace Corals\Modules\CMS\Classes\Feed;
 
-use Illuminate\Support\Arr;
-use Illuminate\Http\Response;
-use Illuminate\Support\Collection;
 use Corals\Modules\CMS\Exceptions\InvalidFeedItem;
 use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Http\Response;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 
 class Feed implements Responsable
 {
@@ -65,7 +65,8 @@ class Feed implements Responsable
         $resolver = Arr::wrap($resolver);
 
         $items = app()->call(
-            array_shift($resolver), $resolver
+            array_shift($resolver),
+            $resolver
         );
 
         return collect($items)->map(function ($feedable) {
@@ -85,13 +86,13 @@ class Feed implements Responsable
             return $feedable;
         }
 
-        if (!$feedable instanceof Feedable) {
+        if (! $feedable instanceof Feedable) {
             throw InvalidFeedItem::notFeedable($feedable);
         }
 
         $feedItem = $feedable->toFeedItem();
 
-        if (!$feedItem instanceof FeedItem) {
+        if (! $feedItem instanceof FeedItem) {
             throw InvalidFeedItem::notAFeedItem($feedItem);
         }
 

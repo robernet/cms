@@ -42,7 +42,6 @@ class BlockTables extends Migration
 
             $table->foreign('block_id')->references('id')->on('cms_blocks')->onDelete('cascade')->onUpdate('cascade');
         });
-
     }
 
     /**

@@ -11,7 +11,7 @@ return [
         'edit_designer' => ' تحرير في مصمم الصفحات',
     ],
     'post' => [
-        'show_published_only' => 'عرض المنشور فقط'
+        'show_published_only' => 'عرض المنشور فقط',
     ],
     'message' => [
         'email_sent_success' => 'تم ارسال البريد الالكتروني بنجاح',
@@ -26,7 +26,7 @@ return [
         'google_analytics' => 'تحليلات جوجل',
         'active' => 'نشط',
 
-    ]
+    ],
 
 
 ];

@@ -34,7 +34,7 @@ class PageTransformer extends BaseTransformer
             'internal' => $page->internal ? '<i class="fa fa-check text-success"></i>' : '-',
             'created_at' => format_date($page->created_at),
             'updated_at' => format_date($page->updated_at),
-            'action' => $this->actions($page)
+            'action' => $this->actions($page),
         ];
 
         return parent::transformResponse($transformedArray);

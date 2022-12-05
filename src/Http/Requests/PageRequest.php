@@ -33,13 +33,13 @@ class PageRequest extends BaseRequest
             $rules = array_merge($rules, [
                 'title' => 'required|max:191',
 //                'content' => 'required',
-                'featured_image' => 'mimes:jpg,jpeg,png|max:' . maxUploadFileSize()
+                'featured_image' => 'mimes:jpg,jpeg,png|max:' . maxUploadFileSize(),
             ]);
         }
 
         if ($this->isStore()) {
             $rules = array_merge($rules, [
-                'slug' => 'required|max:191|unique:posts,slug'
+                'slug' => 'required|max:191|unique:posts,slug',
             ]);
         }
 

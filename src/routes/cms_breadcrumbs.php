@@ -129,7 +129,9 @@ Breadcrumbs::register('block_show', function ($breadcrumbs) {
     $breadcrumbs->push(view()->shared('title_singular'));
 });
 //Widget
-Breadcrumbs::register('widgets', function ($breadcrumbs, $block) {
+Breadcrumbs::register(
+    'widgets',
+    function ($breadcrumbs, $block) {
     $breadcrumbs->parent('blocks');
     $breadcrumbs->push(trans('cms::module.widget.title', ['block' => $block->name]), route(config('cms.models.widget.resource_route'), ['block' => $block->hashed_id]));
 }

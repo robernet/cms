@@ -145,7 +145,7 @@ class SEOTools implements SEOContract
 
         $seoItem = SEOItem::query()->where('slug', $current)->first();
 
-        if (!$seoItem) {
+        if (! $seoItem) {
             $seoItem = SEOItem::query()->where('route', $route->uri)->first();
         }
 
@@ -186,7 +186,7 @@ class SEOTools implements SEOContract
         $arguments = view()->getShared();
 
         $pattern = \preg_replace_callback(
-        /* @lang RegExp */
+            /* @lang RegExp */
             '#\{(.*?)\}#',
             static function ($matches) use ($arguments) {
                 $placeholder = $matches[0];

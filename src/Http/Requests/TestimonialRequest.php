@@ -34,7 +34,7 @@ class TestimonialRequest extends BaseRequest
                 'title' => 'required|max:191',
                 'content' => 'required',
                 'image' => 'image|max:' . maxUploadFileSize(),
-                'properties.*' => 'required'
+                'properties.*' => 'required',
             ]);
         }
 

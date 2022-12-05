@@ -8,7 +8,7 @@ use Corals\Modules\CMS\Http\Requests\DownloadRequest;
 use Corals\Modules\CMS\Models\Download;
 use Corals\Modules\CMS\Services\DownloadService;
 use Illuminate\Http\Request;
-use \Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class DownloadsController extends BaseController
 {
@@ -75,7 +75,6 @@ class DownloadsController extends BaseController
      * @param Download $download
      * @return Download
      */
-
     public function show(DownloadRequest $request, Download $download)
     {
         return $download;
@@ -110,7 +109,6 @@ class DownloadsController extends BaseController
 
         return redirectTo($this->resource_url);
     }
-
 
     /**
      * @param Request $request

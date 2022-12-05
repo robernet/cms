@@ -38,7 +38,7 @@ class NewsTransformer extends BaseTransformer
             'internal' => $news->internal ? '<i class="fa fa-check text-success"></i>' : '-',
             'created_at' => format_date($news->created_at),
             'updated_at' => format_date($news->updated_at),
-            'action' => $this->actions($news)
+            'action' => $this->actions($news),
         ];
 
         return parent::transformResponse($transformedArray);

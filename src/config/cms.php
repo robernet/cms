@@ -12,9 +12,9 @@ return [
                     'href_pattern' => ['pattern' => '[arg]/design', 'replace' => ['return $object->getShowUrl();']],
                     'label_pattern' => ['pattern' => '[arg]', 'replace' => ["return trans('cms::labels.page.edit_designer');"]],
                     'target' => '_blank',
-                    'data' => []
-                ]
-            ]
+                    'data' => [],
+                ],
+            ],
         ],
         'post' => [
             'presenter' => \Corals\Modules\CMS\Transformers\PostPresenter::class,
@@ -41,18 +41,18 @@ return [
                     'icon' => 'fa fa-fw fa-th',
                     'href_pattern' => ['pattern' => '[arg]/widgets', 'replace' => ['return $object->getShowUrl();']],
                     'label_pattern' => ['pattern' => '[arg]', 'replace' => ["return trans('cms::module.widget.title');"]],
-                    'data' => []
+                    'data' => [],
                 ],
                 'edit' => [],
-                'delete' => []
-            ]
+                'delete' => [],
+            ],
         ],
         'widget' => [
             'presenter' => \Corals\Modules\CMS\Transformers\WidgetPresenter::class,
             'resource_route' => 'cms.blocks.widgets.index',
             'resource_relation' => 'block',
             'relation' => 'widget',
-            'translatable' => ['title', 'content']
+            'translatable' => ['title', 'content'],
         ],
         'testimonial' => [
             'presenter' => \Corals\Modules\CMS\Transformers\TestimonialPresenter::class,
@@ -62,9 +62,9 @@ return [
         'download' => [
             'presenter' => \Corals\Modules\CMS\Transformers\DownloadPresenter::class,
             'resource_url' => 'cms/downloads',
-        ]
+        ],
     ],
     'frontend' => [
         'page_limit' => 10,
-    ]
+    ],
 ];

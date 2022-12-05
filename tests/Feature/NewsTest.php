@@ -33,7 +33,7 @@ class NewsTest extends TestCase
         $this->newRequest = [
             'title' => $news[$new],
             'slug' => $news[$new],
-            'content'=>'<p>new</p>',
+            'content' => '<p>new</p>',
             'published' => random_int(0, 1),
             'internal' => random_int(0, 1),
             'private' => random_int(0, 1),
@@ -56,11 +56,11 @@ class NewsTest extends TestCase
         $this->assertDatabaseHas('posts', [
             'title' => $this->new->title,
             'slug' => $this->new->slug,
-            'content' =>$this->new->content,
+            'content' => $this->new->content,
             'published' => $this->new->published,
             'internal' => $this->new->internal,
             'private' => $this->new->private,
-            'type'=>$this->new->type,
+            'type' => $this->new->type,
         ]);
     }
 
@@ -84,22 +84,22 @@ class NewsTest extends TestCase
             $response = $this->put('cms/news/' . $this->new->hashed_id, [
                 'title' => $this->new->title,
                 'slug' => $this->new->slug,
-                'content' =>$this->new->content,
+                'content' => $this->new->content,
                 'published' => $published,
                 'internal' => $this->new->internal,
                 'private' => $this->new->private,
-                'type'=>$this->new->type,
+                'type' => $this->new->type,
             ]);
 
             $response->assertRedirect('cms/news');
             $this->assertDatabaseHas('posts', [
                 'title' => $this->new->title,
                 'slug' => $this->new->slug,
-                'content' =>$this->new->content,
+                'content' => $this->new->content,
                 'published' => $published,
                 'internal' => $this->new->internal,
                 'private' => $this->new->private,
-                'type'=>$this->new->type,
+                'type' => $this->new->type,
             ]);
         }
 
@@ -119,11 +119,11 @@ class NewsTest extends TestCase
             $this->assertDatabaseMissing('posts', [
                 'title' => $this->new->title,
                 'slug' => $this->new->slug,
-                'content' =>$this->new->content,
+                'content' => $this->new->content,
                 'published' => $this->new->published,
                 'internal' => $this->new->internal,
                 'private' => $this->new->private,
-                'type'=>$this->new->type,
+                'type' => $this->new->type,
                 ]);
         }
         $this->assertTrue(true);

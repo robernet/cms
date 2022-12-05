@@ -33,25 +33,25 @@ class PostsTest extends TestCase
         $post = array_rand($posts);
 
         $this->category = Category::query()->create([
-            'name'=>'category',
-            'slug'=>'category',
-            'belongs_to'=>'post',
+            'name' => 'category',
+            'slug' => 'category',
+            'belongs_to' => 'post',
             ]);
         $this->assertDatabaseHas('categories', [
-            'name'=>$this->category->name,
-            'slug'=>$this->category->slug,
-            'belongs_to'=>$this->category->belongs_to,
+            'name' => $this->category->name,
+            'slug' => $this->category->slug,
+            'belongs_to' => $this->category->belongs_to,
         ]);
 
         $this->postRequest = [
             'title' => $posts[$post],
             'slug' => $posts[$post],
-            'content'=>'<p>post</p>',
+            'content' => '<p>post</p>',
             'published' => random_int(0, 1),
             'internal' => random_int(0, 1),
             'private' => random_int(0, 1),
             'author_id' => \user()->id,
-            'categories' => [$this->category->id]
+            'categories' => [$this->category->id],
             ];
 
         $response = $this->post('cms/posts', $this->postRequest);
@@ -72,7 +72,7 @@ class PostsTest extends TestCase
         $this->assertDatabaseHas('posts', [
             'title' => $this->post->title,
             'slug' => $this->post->slug,
-            'content' =>$this->post->content,
+            'content' => $this->post->content,
             'published' => $this->post->published,
             'internal' => $this->post->internal,
             'private' => $this->post->private,
@@ -80,8 +80,8 @@ class PostsTest extends TestCase
         ]);
 
         $this->assertDatabaseHas('category_post', [
-            'post_id'=>$this->post->id,
-            'category_id'=>$this->category->id,
+            'post_id' => $this->post->id,
+            'category_id' => $this->category->id,
         ]);
     }
 
@@ -105,19 +105,19 @@ class PostsTest extends TestCase
             $response = $this->put('cms/posts/' . $this->post->hashed_id, [
                 'title' => $this->post->title,
                 'slug' => $this->post->slug,
-                'content' =>$this->post->content,
+                'content' => $this->post->content,
                 'published' => $published,
                 'internal' => $this->post->internal,
                 'private' => $this->post->private,
                 'author_id' => $this->post->author_id,
-                'categories' => [$this->category->id]
+                'categories' => [$this->category->id],
             ]);
 
             $response->assertRedirect('cms/posts');
             $this->assertDatabaseHas('posts', [
                 'title' => $this->post->title,
                 'slug' => $this->post->slug,
-                'content' =>$this->post->content,
+                'content' => $this->post->content,
                 'published' => $published,
                 'internal' => $this->post->internal,
                 'private' => $this->post->private,
@@ -141,15 +141,15 @@ class PostsTest extends TestCase
             $this->assertDatabaseMissing('posts', [
                 'title' => $this->post->title,
                 'slug' => $this->post->slug,
-                'content' =>$this->post->content,
+                'content' => $this->post->content,
                 'published' => $this->post->published,
                 'internal' => $this->post->internal,
                 'private' => $this->post->private,
                 'author_id' => $this->post->author_id,]);
 
             $this->assertDatabaseMissing('category_post', [
-                'post_id'=>$this->post->id,
-                'category_id'=>$this->category->id,
+                'post_id' => $this->post->id,
+                'category_id' => $this->category->id,
             ]);
         }
         $this->assertTrue(true);

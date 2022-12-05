@@ -45,5 +45,4 @@ class BlockRequest extends BaseRequest
 
         return $rules;
     }
-
 }

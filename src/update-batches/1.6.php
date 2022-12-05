@@ -9,7 +9,7 @@ $postClass = \Corals\Modules\CMS\Models\Post::class;
                 'name' => $oldTag->name,
                 'slug' => $oldTag->slug,
                 'module' => 'CMS',
-                'status' => $oldTag->status
+                'status' => $oldTag->status,
             ]);
 
             $oldPostTags = \DB::table('post_tag')->where('tag_id', $oldTag->id)->get();
@@ -18,7 +18,7 @@ $postClass = \Corals\Modules\CMS\Models\Post::class;
                 \DB::table('taggables')->insert([
                     'tag_id' => $newTagId,
                     'taggable_id' => $postTag->post_id,
-                    'taggable_type' => $postClass
+                    'taggable_type' => $postClass,
                 ]);
             }
         }

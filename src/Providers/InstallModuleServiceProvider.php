@@ -13,7 +13,7 @@ class InstallModuleServiceProvider extends BaseInstallModuleServiceProvider
     protected $migrations = [
         CmsTables::class,
         AddFeaturedImageLink::class,
-        BlockTables::class
+        BlockTables::class,
     ];
 
     protected function providerBooted()

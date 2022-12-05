@@ -27,7 +27,7 @@ class CMSPublicController extends APIPublicController
         try {
             $validTypes = ['page', 'post', 'faq', 'news'];
 
-            if (!in_array($type, $validTypes)) {
+            if (! in_array($type, $validTypes)) {
                 throw new \Exception('Invalid type!! type should be of the following: ' . join(', ', $validTypes));
             }
 

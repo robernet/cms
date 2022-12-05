@@ -63,13 +63,12 @@ class PagesDataTable extends BaseDataTable
         ];
     }
 
-
     protected function getBulkActions()
     {
         return [
             'delete' => ['title' => trans('Corals::labels.delete'), 'permission' => 'CMS::page.delete', 'confirmation' => trans('Corals::labels.confirmation.title')],
             'published' => ['title' => '<i class="fa fa-check-circle"></i> ' . trans('cms::attributes.content.published'), 'permission' => 'CMS::page.update', 'confirmation' => trans('Corals::labels.confirmation.title')],
-            'draft' => ['title' => '<i class="fa fa-check-circle-o"></i> ' . trans('cms::attributes.content.draft'), 'permission' => 'CMS::page.update', 'confirmation' => trans('Corals::labels.confirmation.title')]
+            'draft' => ['title' => '<i class="fa fa-check-circle-o"></i> ' . trans('cms::attributes.content.draft'), 'permission' => 'CMS::page.update', 'confirmation' => trans('Corals::labels.confirmation.title')],
 
         ];
     }
@@ -77,6 +76,7 @@ class PagesDataTable extends BaseDataTable
     protected function getOptions()
     {
         $url = url(config('cms.models.page.resource_url'));
+
         return ['resource_url' => $url];
     }
 }

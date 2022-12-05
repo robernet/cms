@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Corals\Modules\CMS\DataTables;
 
 use Corals\Foundation\DataTables\BaseDataTable;
@@ -69,13 +68,14 @@ class FaqsDataTable extends BaseDataTable
         return [
             'delete' => ['title' => trans('Corals::labels.delete'), 'permission' => 'CMS::faq.delete', 'confirmation' => trans('Corals::labels.confirmation.title')],
             'published' => ['title' => '<i class="fa fa-check-circle"></i> ' .trans('cms::attributes.content.published'), 'permission' => 'CMS::faq.update', 'confirmation' => trans('Corals::labels.confirmation.title')],
-            'draft' => ['title' => '<i class="fa fa-check-circle-o"></i> ' .trans('cms::attributes.content.draft'), 'permission' => 'CMS::faq.update', 'confirmation' => trans('Corals::labels.confirmation.title')]
+            'draft' => ['title' => '<i class="fa fa-check-circle-o"></i> ' .trans('cms::attributes.content.draft'), 'permission' => 'CMS::faq.update', 'confirmation' => trans('Corals::labels.confirmation.title')],
         ];
     }
 
     protected function getOptions()
     {
         $url = url(config('cms.models.faq.resource_url'));
+
         return ['resource_url' => $url];
     }
 }

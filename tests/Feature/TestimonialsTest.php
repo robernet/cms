@@ -37,7 +37,7 @@ class TestimonialsTest extends TestCase
             'properties' => [
                 'job_title' => 'Dr',
                 'rating' => random_int(1, 5),
-            ]
+            ],
         ];
 
         $response = $this->post('cms/testimonials', $this->testimonialRequest);
@@ -75,15 +75,15 @@ class TestimonialsTest extends TestCase
 
         if ($this->testimonial) {
             $published = $this->testimonial->published == 0 ? 1 : 0;
-            $rating =random_int(1, 5);
+            $rating = random_int(1, 5);
             $response = $this->put('cms/testimonials/' . $this->testimonial->hashed_id, [
                 'title' => $this->testimonial->title,
                 'content' => $this->testimonial->content,
                 'published' => $published,
                 'properties' => [
                     'job_title' => 'manager',
-                    'rating' =>$rating,
-                ]
+                    'rating' => $rating,
+                ],
             ]);
 
             $response->assertRedirect('cms/testimonials');

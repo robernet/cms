@@ -6,7 +6,6 @@ use Corals\Modules\CMS\Models\Page;
 
 class PageObserver
 {
-
     /**
      * @param Page $page
      */

@@ -6,7 +6,6 @@ use Corals\Modules\CMS\Models\Post;
 
 class PostObserver
 {
-
     /**
      * @param Post $post
      */

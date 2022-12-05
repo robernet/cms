@@ -2,7 +2,6 @@
 
 namespace Corals\Modules\CMS\Services;
 
-
 use Corals\Foundation\Services\BaseServiceClass;
 
 class FaqService extends BaseServiceClass

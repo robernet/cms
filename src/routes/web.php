@@ -31,7 +31,7 @@ Route::group(['prefix' => 'cms', 'as' => 'cms.'], function () {
 Route::group(['prefix' => ''], function () {
     Route::get('/', 'FrontendController@index')->name('frontend_home');
     Route::get('{slug}', 'FrontendController@show')->name('frontend_single')
-        ->where('slug',implode('|',Content::query()->published()->pluck('slug')->toArray()));
+        ->where('slug', implode('|', Content::query()->published()->pluck('slug')->toArray()));
     Route::get('category/{slug}', 'FrontendController@category')->name('frontend_category');
     Route::get('tag/{slug}', 'FrontendController@tag')->name('frontend_tag');
     Route::post('contact/email', 'FrontendController@contactEmail');

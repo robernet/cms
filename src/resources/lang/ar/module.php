@@ -6,18 +6,18 @@ return [
     ],
     'category' => [
         'title' => 'الأصناف',
-        'title_singular' => 'الصنف'
+        'title_singular' => 'الصنف',
     ],
     'news' => [
         'title' => 'الأخبار',
-        'title_singular' => 'الأخبار'
+        'title_singular' => 'الأخبار',
     ],
     'page' => [
         'title' => 'الصفحات',
-        'title_singular' => 'الصفحة'
+        'title_singular' => 'الصفحة',
     ],
     'post' => [
         'title' => 'المنشورات',
-        'title_singular' => 'المنشور'
+        'title_singular' => 'المنشور',
     ],
 ];

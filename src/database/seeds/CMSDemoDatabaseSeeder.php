@@ -2,9 +2,8 @@
 
 namespace Corals\Modules\CMS\database\seeds;
 
-use Corals\Modules\CMS\Models\Page;
 use Corals\Modules\CMS\Models\Block;
-use Corals\Modules\CMS\Models\Widget;
+use Corals\Modules\CMS\Models\Page;
 use Illuminate\Database\Seeder;
 
 class CMSDemoDatabaseSeeder extends Seeder
@@ -14,8 +13,9 @@ class CMSDemoDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Page::updateOrCreate(['slug' => 'faqs', 'type' => 'page'],
-            array(
+        Page::updateOrCreate(
+            ['slug' => 'faqs', 'type' => 'page'],
+            [
                 'title' => 'FAQs',
                 'slug' => 'faqs',
                 'meta_keywords' => 'faqs',
@@ -48,13 +48,15 @@ class CMSDemoDatabaseSeeder extends Seeder
                 'type' => 'page',
                 'template' => 'full',
                 'author_id' => 1,
-                'deleted_at' => NULL,
+                'deleted_at' => null,
                 'created_at' => '2017-11-16 11:56:34',
                 'updated_at' => '2017-11-16 11:56:34',
-            ));
+            ]
+        );
 
-        Page::updateOrCreate(['slug' => 'news', 'type' => 'page'],
-            array(
+        Page::updateOrCreate(
+            ['slug' => 'news', 'type' => 'page'],
+            [
                 'title' => 'News',
                 'slug' => 'news',
                 'meta_keywords' => 'news',
@@ -66,18 +68,19 @@ class CMSDemoDatabaseSeeder extends Seeder
                 'type' => 'page',
                 'template' => 'default',
                 'author_id' => 1,
-                'deleted_at' => NULL,
+                'deleted_at' => null,
                 'created_at' => '2019-05-29 11:56:34',
                 'updated_at' => '2019-05-29 11:56:34',
-            ));
+            ]
+        );
 
         $block = Block::updateOrCreate(['name' => 'Pre Footer Block', 'key' => 'pre-footer-block'], [
             'name' => 'Pre Footer Block',
             'key' => 'pre-footer-block',
         ]);
 
-        $widgets = array(
-            array(
+        $widgets = [
+            [
                 'title' => 'Free Worldwide Shipping',
                 'content' => '<div class="text-center mb-30"><img
                         class="d-block w-90 img-thumbnail rounded-circle mx-auto mb-3"
@@ -90,8 +93,8 @@ class CMSDemoDatabaseSeeder extends Seeder
                 'widget_width' => 3,
                 'widget_order' => 0,
                 'status' => 'active',
-            ),
-            array(
+            ],
+            [
                 'title' => 'Money Back Guarantee',
                 'content' => '<div class="text-center mb-30"><img
                         class="d-block w-90 img-thumbnail rounded-circle mx-auto mb-3"
@@ -104,9 +107,9 @@ class CMSDemoDatabaseSeeder extends Seeder
                 'widget_width' => 3,
                 'widget_order' => 1,
                 'status' => 'active',
-            ),
+            ],
 
-            array(
+            [
                 'title' => '24/7 Customer Support',
                 'content' => '<div class="text-center mb-30"><img
                         class="d-block w-90 img-thumbnail rounded-circle mx-auto mb-3"
@@ -120,8 +123,8 @@ class CMSDemoDatabaseSeeder extends Seeder
                 'widget_order' => 2,
                 'status' => 'active',
 
-            ),
-            array(
+            ],
+            [
                 'title' => 'Secure Online Payment',
                 'content' => '<div class="text-center mb-30"><img
                         class="d-block w-90 img-thumbnail rounded-circle mx-auto mb-3"
@@ -135,8 +138,8 @@ class CMSDemoDatabaseSeeder extends Seeder
                 'widget_order' => 3,
                 'status' => 'active',
 
-            ),
-        );
+            ],
+        ];
         foreach ($widgets as $widget) {
             \Corals\Modules\CMS\Models\Widget::updateOrCreate(
                 ['block_id' => $widget['block_id'], 'title' => $widget['title']],
@@ -145,81 +148,84 @@ class CMSDemoDatabaseSeeder extends Seeder
         }
 
         $news[] = \Corals\Modules\CMS\Models\News::updateOrCreate(
-            array(
+            [
                 'title' => 'Get Started with Laraship Laravel Marketplace',
                 'slug' => 'get-started-with-laraship ',
-                'meta_keywords' => NULL,
-                'meta_description' => NULL,
+                'meta_keywords' => null,
+                'meta_description' => null,
                 'content' => '<p>In this article, we are going to talk about laraship Marketplace, the amazing Laravel marketplace platform, and explore some of its nice features and how to utilize them.</p>',
                 'published' => 1,
                 'published_at' => '2019-3-04 11:18:23',
                 'private' => 0,
                 'type' => 'news',
-                'template' => NULL,
+                'template' => null,
                 'author_id' => 1,
-                'deleted_at' => NULL,
+                'deleted_at' => null,
                 'created_at' => '2019-3-04 16:45:51',
-                'updated_at' => '2019-3-04 16:18:23',)
+                'updated_at' => '2019-3-04 16:18:23',]
         );
         $news[] = \Corals\Modules\CMS\Models\News::updateOrCreate(
-            array(
+            [
                 'title' => 'How to Speed your Laraship Website or Web Application',
                 'slug' => 'how-to-speed-your-laraship',
-                'meta_keywords' => NULL,
-                'meta_description' => NULL,
+                'meta_keywords' => null,
+                'meta_description' => null,
                 'content' => '<p>As we know, the site speed is becoming the main factor to help to index your website under search engines like Google, and in the article, we will introduce some of the techniques to speed your Laraship website.
 As Laraship built on Laravel you will find some of the techniques are part of Laravel engine, what’s nice in Laraship you can utilize Laravel because it hasn’t overridden any of Laravel components or modules.</p>',
                 'published' => 1,
                 'published_at' => '2019-3-04 11:18:23',
                 'private' => 0,
                 'type' => 'news',
-                'template' => NULL,
+                'template' => null,
                 'author_id' => 1,
-                'deleted_at' => NULL,
+                'deleted_at' => null,
                 'created_at' => '2019-3-04 16:45:51',
-                'updated_at' => '2019-3-04 16:18:23',)
+                'updated_at' => '2019-3-04 16:18:23',]
         );
-        $news[] = \Corals\Modules\CMS\Models\News::updateOrCreate(['slug' => 'laraship-affiliate-program'],
-            array(
+        $news[] = \Corals\Modules\CMS\Models\News::updateOrCreate(
+            ['slug' => 'laraship-affiliate-program'],
+            [
                 'title' => 'Update Laraship to Laravel 5.7',
                 'slug' => 'update-laraship ',
-                'meta_keywords' => NULL,
-                'meta_description' => NULL,
+                'meta_keywords' => null,
+                'meta_description' => null,
                 'content' => '<p>Laraship team is excited to the announcement of the new Laraship update to support Laravel 5.7.To update your copy please follow the link below to update :https://www.laraship.com/docs/laraship/update-laraship/update-laraship-to-laravel-5-7/ Note:since there are some...</p>',
                 'published' => 1,
                 'published_at' => '2019-3-04 11:18:23',
                 'private' => 0,
                 'type' => 'news',
-                'template' => NULL,
+                'template' => null,
                 'author_id' => 1,
-                'deleted_at' => NULL,
+                'deleted_at' => null,
                 'created_at' => '2019-3-04 16:45:51',
-                'updated_at' => '2019-3-04 16:18:23')
+                'updated_at' => '2019-3-04 16:18:23', ]
         );
-        $news[] = \Corals\Modules\CMS\Models\News::updateOrCreate(['slug' => 'laraship-affiliate-program'],
-            array(
+        $news[] = \Corals\Modules\CMS\Models\News::updateOrCreate(
+            ['slug' => 'laraship-affiliate-program'],
+            [
                 'title' => 'Laraship Affiliate Program is available!',
                 'slug' => 'laraship-affiliate-program',
-                'meta_keywords' => NULL,
-                'meta_description' => NULL,
+                'meta_keywords' => null,
+                'meta_description' => null,
                 'content' => '<p>Laraship team is excited to announce our referral program, because we believe that success is a sharing story, we have are introducing the affiliate program where members can receive 20% of their referral purchases, signup to our program and start promoting our products, not only you’re making money by that but also helps other people in building their applications using the most advanced eCommerce , Marketplace , Classified, and SaaS product. they will save cost, time, and make sure they build their apps on a robust, reliable and high quality product.
 To enroll click on the link below</p>',
                 'published' => 1,
                 'published_at' => '2019-3-04 11:18:23',
                 'private' => 0,
                 'type' => 'news',
-                'template' => NULL,
+                'template' => null,
                 'author_id' => 1,
-                'deleted_at' => NULL,
+                'deleted_at' => null,
                 'created_at' => '2019-3-04 16:45:51',
-                'updated_at' => '2019-3-04 16:18:23',)
+                'updated_at' => '2019-3-04 16:18:23',]
         );
-        $news[] = \Corals\Modules\CMS\Models\News::updateOrCreate(['slug' => 'ways-to-communicate'],
-            array(
+        $news[] = \Corals\Modules\CMS\Models\News::updateOrCreate(
+            ['slug' => 'ways-to-communicate'],
+            [
                 'title' => '10 Ways to communicate with Laraship Users',
                 'slug' => 'ways-to-communicate',
-                'meta_keywords' => NULL,
-                'meta_description' => NULL,
+                'meta_keywords' => null,
+                'meta_description' => null,
                 'content' => '<p>Building a Laravel communication platform is not easy and require a lot of efforts, in the same time in most cases you don’t have the time to build such tools because of lack of time, resources, and budget.
 
 Communication channels are important in any web application, especially for transactional web applications where users need to be updated with all aspects related to their accounts and items, like orders, products,
@@ -231,11 +237,11 @@ Laraship is the only Laravel platform that has implemented a complete set of com
                 'published_at' => '2019-3-04 11:18:23',
                 'private' => 0,
                 'type' => 'news',
-                'template' => NULL,
+                'template' => null,
                 'author_id' => 1,
-                'deleted_at' => NULL,
+                'deleted_at' => null,
                 'created_at' => '2019-3-04 16:45:51',
-                'updated_at' => '2019-3-04 16:18:23',)
+                'updated_at' => '2019-3-04 16:18:23',]
         );
     }
 }

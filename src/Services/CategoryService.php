@@ -18,7 +18,6 @@ class CategoryService extends BaseServiceClass
             $subscribable_plans = $request->input('subscription_plans');
 
             if (is_array($subscribable_plans)) {
-
                 foreach ($subscribable_plans as $subscribable_plan) {
                     $plans[] = [
                         'plan_id' => $subscribable_plan,

@@ -3,9 +3,9 @@
 namespace Corals\Modules\CMS\Http\Controllers;
 
 use Corals\Foundation\Http\Controllers\BaseController;
+use Corals\Foundation\Http\Requests\BulkRequest;
 use Corals\Modules\CMS\DataTables\FaqsDataTable;
 use Corals\Modules\CMS\Http\Requests\FaqRequest;
-use Corals\Foundation\Http\Requests\BulkRequest;
 use Corals\Modules\CMS\Models\Faq;
 use Corals\Modules\CMS\Services\FaqService;
 
@@ -112,11 +112,9 @@ class FaqsController extends BaseController
      * @param Faq $faq
      * @return \Illuminate\Http\JsonResponse
      */
-
     public function bulkAction(BulkRequest $request)
     {
         try {
-
             $action = $request->input('action');
             $selection = json_decode($request->input('selection'), true);
 
@@ -129,14 +127,15 @@ class FaqsController extends BaseController
                         $this->destroy($faq_request, $faq);
                     }
                     $message = ['level' => 'success', 'message' => trans('Corals::messages.success.deleted', ['item' => $this->title_singular])];
+
                     break;
 
-                case 'published' :
+                case 'published':
                     foreach ($selection as $selection_id) {
                         $faq = Faq::findByHash($selection_id);
                         if (user()->can('CMS::faq.update')) {
                             $faq->update([
-                                'published' => true
+                                'published' => true,
                             ]);
                             $faq->save();
                             $message = ['level' => 'success', 'message' => trans('cms::messages.update_published', ['item' => $this->title_singular])];
@@ -144,14 +143,15 @@ class FaqsController extends BaseController
                             $message = ['level' => 'error', 'message' => trans('cms::messages.no_permission', ['item' => $this->title_singular])];
                         }
                     }
+
                     break;
 
-                case 'draft' :
+                case 'draft':
                     foreach ($selection as $selection_id) {
                         $faq = Faq::findByHash($selection_id);
                         if (user()->can('CMS::faq.update')) {
                             $faq->update([
-                                'published' => false
+                                'published' => false,
                             ]);
                             $faq->save();
                             $message = ['level' => 'success', 'message' => trans('cms::messages.update_published', ['item' => $this->title_singular])];
@@ -159,10 +159,9 @@ class FaqsController extends BaseController
                             $message = ['level' => 'error', 'message' => trans('cms::messages.no_permission', ['item' => $this->title_singular])];
                         }
                     }
+
                     break;
             }
-
-
         } catch (\Exception $exception) {
             log_exception($exception, Faq::class, 'bulkAction');
             $message = ['level' => 'error', 'message' => $exception->getMessage()];

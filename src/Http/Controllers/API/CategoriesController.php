@@ -2,7 +2,6 @@
 
 namespace Corals\Modules\CMS\Http\Controllers\API;
 
-use Corals\Foundation\DataTables\CoralsScope;
 use Corals\Foundation\Http\Controllers\APIBaseController;
 use Corals\Modules\CMS\DataTables\CategoriesDataTable;
 use Corals\Modules\CMS\Http\Requests\CategoryRequest;

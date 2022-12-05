@@ -9,40 +9,40 @@ return [
     ],
     'category' => [
         'title' => 'Categories',
-        'title_singular' => 'Category'
+        'title_singular' => 'Category',
     ],
     'news' => [
         'title' => 'News',
-        'title_singular' => 'News'
+        'title_singular' => 'News',
     ],
     'faq' => [
         'title' => 'FAQs',
-        'title_singular' => 'FAQ'
+        'title_singular' => 'FAQ',
     ],
     'page' => [
         'title' => 'Pages',
-        'title_singular' => 'Page'
+        'title_singular' => 'Page',
     ],
     'post' => [
         'title' => 'Posts',
-        'title_singular' => 'Post'
+        'title_singular' => 'Post',
     ],
     'block' => [
         'title' => 'Blocks',
-        'title_singular' => 'block'
+        'title_singular' => 'block',
     ],
     'widget' => [
         'title' => 'Widgets',
-        'title_singular' => 'Widget'
+        'title_singular' => 'Widget',
     ],
     'testimonial' => [
         'title' => 'Testimonials',
-        'title_singular' => 'Testimonial'
+        'title_singular' => 'Testimonial',
     ],
     'download' => [
         'title' => 'Downloads',
-        'title_singular' => 'Download'
-    ]
+        'title_singular' => 'Download',
+    ],
 
 
 ];

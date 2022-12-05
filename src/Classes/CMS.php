@@ -8,7 +8,7 @@ use Corals\Modules\CMS\Models\Download;
 use Corals\Modules\CMS\Models\News;
 use Corals\Modules\CMS\Models\Post;
 use Corals\Modules\CMS\Models\Testimonial;
-use Corals\Modules\Utility\Models\Tag\Tag;
+use Corals\Modules\Utility\Tag\Models\Tag;
 use \Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class CMS
@@ -218,9 +218,9 @@ class CMS
     public function getCategoriesBelongsTo()
     {
         $belongs_to = [
-            'page' => trans('CMS::attributes.category.page'),
-            'post' => trans('CMS::attributes.category.post'),
-            'faq' => trans('CMS::attributes.category.faq'),
+            'page' => trans('cms::attributes.category.page'),
+            'post' => trans('cms::attributes.category.post'),
+            'faq' => trans('cms::attributes.category.faq'),
         ];
 
         return $belongs_to;

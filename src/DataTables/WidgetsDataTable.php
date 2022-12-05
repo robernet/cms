@@ -64,7 +64,7 @@ class WidgetsDataTable extends BaseDataTable
         return ['ordering' => true, 'resource_url' => $url];
     }
 
-    protected function getBuilderParameters()
+    protected function getBuilderParameters(): array
     {
         return ['order' => [[0, 'asc']]];
     }

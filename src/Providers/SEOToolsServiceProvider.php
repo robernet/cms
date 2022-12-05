@@ -2,11 +2,11 @@
 
 namespace Corals\Modules\CMS\Providers;
 
-use Corals\Modules\CMS\Contracts;
 use Corals\Modules\CMS\Classes\OpenGraph;
 use Corals\Modules\CMS\Classes\SEOMeta;
 use Corals\Modules\CMS\Classes\SEOTools;
 use Corals\Modules\CMS\Classes\TwitterCards;
+use Corals\Modules\CMS\Contracts;
 use Illuminate\Config\Repository as Config;
 use Illuminate\Support\ServiceProvider;
 

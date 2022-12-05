@@ -7,5 +7,5 @@ return [
     ],
     'update_published' => 'Updated Published',
     'update_status' => 'Updated Status !',
-    'no_permission' => 'There is no permission update published'
+    'no_permission' => 'There is no permission update published',
 ];

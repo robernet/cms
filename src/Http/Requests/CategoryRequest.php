@@ -39,7 +39,7 @@ class CategoryRequest extends BaseRequest
         if ($this->isStore()) {
             $rules = array_merge($rules, [
                 'name' => 'required|max:191|unique:categories,name',
-                'slug' => 'required|max:191|unique:categories,slug'
+                'slug' => 'required|max:191|unique:categories,slug',
             ]);
         }
 

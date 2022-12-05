@@ -32,7 +32,7 @@ class WidgetsDataTable extends BaseDataTable
     public function query(Widget $model)
     {
         $block = $this->request->route('block');
-        if (!$block) {
+        if (! $block) {
             abort('404');
         }
 
@@ -61,6 +61,7 @@ class WidgetsDataTable extends BaseDataTable
     {
         $block = $this->request->route('block');
         $url = route(config('cms.models.widget.resource_route'), ['block' => $block->hashed_id]);
+
         return ['ordering' => true, 'resource_url' => $url];
     }
 

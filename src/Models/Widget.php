@@ -8,7 +8,8 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class Widget extends BaseModel
 {
-    use PresentableTrait, LogsActivity;
+    use PresentableTrait;
+    use LogsActivity;
 
     /**
      *  Model configuration.
@@ -39,19 +40,26 @@ class Widget extends BaseModel
 
         $content = $this->getAttributeValue('content');
 
-        $content = str_ireplace(array('<?php', '@php', '<?', '@endphp', '?>'), array('&lt;?php', '&lt;?PHP', '&lt;?', '&gt;?php', '?&gt;'), $content);
+        $content = str_ireplace(['<?php', '@php', '<?', '@endphp', '?>'], ['&lt;?php', '&lt;?PHP', '&lt;?', '&gt;?php', '?&gt;'], $content);
 
         $php = \Blade::compileString($content);
+
         try {
             eval('?' . '>' . $php);
         } catch (\Exception $e) {
-            while (ob_get_level() > $obLevel) ob_end_clean();
+            while (ob_get_level() > $obLevel) {
+                ob_end_clean();
+            }
+
             throw $e;
         } catch (\Throwable $e) {
-            while (ob_get_level() > $obLevel) ob_end_clean();
+            while (ob_get_level() > $obLevel) {
+                ob_end_clean();
+            }
+
             throw new FatalThrowableError($e);
         }
+
         return ob_get_clean();
     }
 }
-

@@ -9,14 +9,14 @@ use Corals\Modules\CMS\Models\News;
 use Corals\Modules\CMS\Models\Post;
 use Corals\Modules\CMS\Models\Testimonial;
 use Corals\Modules\Utility\Tag\Models\Tag;
-use \Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class CMS
 {
     /**
      * CMS constructor.
      */
-    function __construct()
+    public function __construct()
     {
     }
 
@@ -37,7 +37,7 @@ class CMS
     {
         $categories = Category::query()->where('belongs_to', '=', $belongsTo);
 
-        if (!is_null($internalState)) {
+        if (! is_null($internalState)) {
             $categories = $categories->whereHas('posts', function ($query) use ($internalState) {
                 $query->internal($internalState);
             });
@@ -72,7 +72,7 @@ class CMS
     {
         $posts = $category->posts()->internal($internalState)->published();
 
-        if (!user()) {
+        if (! user()) {
             $posts = $posts->public();
         }
 
@@ -124,7 +124,6 @@ class CMS
         return $downloads->take($limit)->get();
     }
 
-
     /**
      * @param Content $content
      * @return \Illuminate\Contracts\Routing\UrlGenerator|null|string
@@ -132,7 +131,7 @@ class CMS
      */
     public function getContentFeaturedImage(Content $content)
     {
-        if (!$content) {
+        if (! $content) {
             return null;
         }
         $class = $content->contentTypeMapping[$content->type];
@@ -159,7 +158,7 @@ class CMS
 
         $posts = $posts->published();
 
-        if (!user()) {
+        if (! user()) {
             $posts = $posts->public();
         }
 
@@ -177,8 +176,8 @@ class CMS
             $template_key = basename(str_replace('.blade.php', '', $template));
             $templates[$template_key] = ucfirst($template_key);
         }
-        return $templates;
 
+        return $templates;
     }
 
     public function getNotAvailableCategories()
@@ -188,27 +187,25 @@ class CMS
         }
         $not_available_categories = [];
         if (\Modules::isModuleActive('corals-subscriptions')) {
-
             $categories = Category::all();
             $not_available_categories = [];
             foreach ($categories as $category) {
                 $subscription_plans = $category->subscribable_plans;
                 if ($subscription_plans) {
                     foreach ($subscription_plans as $subscription_plan) {
-                        if (!user() || !user()->activeSubscriptions->where('plan_id', $subscription_plan->id)->count()) {
+                        if (! user() || ! user()->activeSubscriptions->where('plan_id', $subscription_plan->id)->count()) {
                             $not_available_categories [] = $category->id;
-
                         }
                     }
                 }
             }
         }
+
         return $not_available_categories;
     }
 
     public function getLatestNews($limit = 3)
     {
-
         $news = News::published();
         $news = $news->orderBy('published_at', 'desc')->take($limit)->get();
 
@@ -237,7 +234,7 @@ class CMS
             });
 
 
-        if (!user()) {
+        if (! user()) {
             $posts = $posts->public();
         }
 

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Corals\Modules\CMS\DataTables;
 
 use Corals\Foundation\DataTables\BaseDataTable;

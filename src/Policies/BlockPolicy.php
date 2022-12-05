@@ -10,6 +10,7 @@ class BlockPolicy extends BasePolicy
     protected $administrationPermission = 'Administrations::admin.cms';
 
     protected $skippedAbilities = ['create'];
+
     /**
      * @param User $user
      * @return bool
@@ -19,7 +20,7 @@ class BlockPolicy extends BasePolicy
         if ($user->can('CMS::block.view')) {
             return true;
         }
+
         return false;
     }
-
 }

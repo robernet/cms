@@ -2,13 +2,14 @@
 
 namespace Corals\Modules\CMS\Models;
 
-use Illuminate\Database\Eloquent\Builder;
 use Corals\Modules\Utility\Tag\Traits\HasTags;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Builder;
 
 class Faq extends Content
 {
-    use HasTags, Sluggable;
+    use HasTags;
+    use Sluggable;
 
     public function getModuleName()
     {
@@ -33,20 +34,18 @@ class Faq extends Content
     protected $table = 'posts';
 
     protected $attributes = [
-        'type' => 'faq'
+        'type' => 'faq',
     ];
 
-    public function sluggable() : array
+    public function sluggable(): array
     {
         return [
             'slug' => [
                 'source' => 'title',
-                'onUpdate' => true
-            ]
+                'onUpdate' => true,
+            ],
         ];
     }
 
     protected $fillable = ['title', 'slug', 'tags', 'translation_language_code', 'content', 'published', 'published_at', 'type', 'author_id'];
-
-
 }

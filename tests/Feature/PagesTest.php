@@ -148,7 +148,7 @@ class PagesTest extends TestCase
             $response = $this->put('cms/pages/' . $this->page->hashed_id . '/save-design', [
                 'title' => $this->page->title,
                 'slug' => $this->page->slug,
-                'content' => $this->page->content
+                'content' => $this->page->content,
             ]);
 
             $response->assertStatus(200)->assertSeeText('Page has been updated successfully.');

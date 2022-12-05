@@ -2,7 +2,6 @@
 
 namespace Corals\Modules\CMS\Services;
 
-
 use Corals\Foundation\Services\BaseServiceClass;
 
 class NewsService extends BaseServiceClass
@@ -17,7 +16,7 @@ class NewsService extends BaseServiceClass
             $news->clearMediaCollection('featured-image');
         }
 
-        if ($request->hasFile('featured_image') && !$request->has('clear')) {
+        if ($request->hasFile('featured_image') && ! $request->has('clear')) {
             $news->addMedia($request->file('featured_image'))
                 ->withCustomProperties(['root' => 'user_' . user()->hashed_id])
                 ->toMediaCollection('featured-image');

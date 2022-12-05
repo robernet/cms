@@ -150,11 +150,9 @@ class PagesController extends BaseController
      * @param Page $page
      * @return \Illuminate\Http\JsonResponse
      */
-
     public function bulkAction(BulkRequest $request)
     {
         try {
-
             $action = $request->input('action');
             $selection = json_decode($request->input('selection'), true);
 
@@ -162,19 +160,20 @@ class PagesController extends BaseController
                 case 'delete':
                     foreach ($selection as $selection_id) {
                         $page = Page::findByHash($selection_id);
-                        $page_request = new PageRequest;
+                        $page_request = new PageRequest();
                         $page_request->setMethod('DELETE');
                         $this->destroy($page_request, $page);
                     }
                     $message = ['level' => 'success', 'message' => trans('Corals::messages.success.deleted', ['item' => $this->title_singular])];
+
                     break;
 
-                case 'published' :
+                case 'published':
                     foreach ($selection as $selection_id) {
                         $page = Page::findByHash($selection_id);
                         if (user()->can('CMS::page.update')) {
                             $page->update([
-                                'published' => true
+                                'published' => true,
                             ]);
                             $page->save();
                             $message = ['level' => 'success', 'message' => trans('cms::messages.update_published', ['item' => $this->title_singular])];
@@ -182,14 +181,15 @@ class PagesController extends BaseController
                             $message = ['level' => 'error', 'message' => trans('cms::messages.no_permission', ['item' => $this->title_singular])];
                         }
                     }
+
                     break;
 
-                case 'draft' :
+                case 'draft':
                     foreach ($selection as $selection_id) {
                         $page = Page::findByHash($selection_id);
                         if (user()->can('CMS::page.update')) {
                             $page->update([
-                                'published' => false
+                                'published' => false,
                             ]);
                             $page->save();
                             $message = ['level' => 'success', 'message' => trans('cms::messages.update_published', ['item' => $this->title_singular])];
@@ -197,10 +197,9 @@ class PagesController extends BaseController
                             $message = ['level' => 'error', 'message' => trans('cms::messages.no_permission', ['item' => $this->title_singular])];
                         }
                     }
+
                     break;
             }
-
-
         } catch (\Exception $exception) {
             log_exception($exception, Page::class, 'bulkAction');
             $message = ['level' => 'error', 'message' => $exception->getMessage()];

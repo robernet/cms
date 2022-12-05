@@ -3,7 +3,6 @@
 namespace Corals\Modules\CMS\Transformers;
 
 use Corals\Foundation\Transformers\BaseTransformer;
-use Corals\Modules\CMS\Models\Post;
 use Corals\Modules\CMS\Models\Testimonial;
 
 class TestimonialTransformer extends BaseTransformer
@@ -19,10 +18,8 @@ class TestimonialTransformer extends BaseTransformer
      * @return array
      * @throws \Throwable
      */
-
     public function transform(Testimonial $testimonial)
     {
-
         $transformedArray = [
             'id' => $testimonial->id,
             'image' => '<img src="' . $testimonial->image . '" class="img-responsive" alt="User Picture" width="45"/>',
@@ -33,7 +30,7 @@ class TestimonialTransformer extends BaseTransformer
             'published_at' => $testimonial->published ? format_date($testimonial->published_at) : '-',
             'created_at' => format_date($testimonial->created_at),
             'updated_at' => format_date($testimonial->updated_at),
-            'action' => $this->actions($testimonial)
+            'action' => $this->actions($testimonial),
         ];
 
         return parent::transformResponse($transformedArray);

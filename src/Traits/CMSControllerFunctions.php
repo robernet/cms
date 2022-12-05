@@ -7,8 +7,8 @@ use Corals\Modules\CMS\Http\Requests\PageRequest;
 use Corals\Modules\CMS\Models\Category;
 use Corals\Modules\CMS\Models\Content;
 use Corals\Modules\CMS\Models\Faq;
-use Corals\Modules\CMS\Models\Post;
 use Corals\Modules\CMS\Models\News;
+use Corals\Modules\CMS\Models\Post;
 use Corals\Modules\Subscriptions\Models\Product;
 use Corals\Modules\Utility\Tag\Models\Tag;
 use Illuminate\Http\Request;
@@ -26,7 +26,7 @@ trait CMSControllerFunctions
     {
         $this->contentQuery = Content::query()->published();
 
-        if (!$ignoreInternal) {
+        if (! $ignoreInternal) {
             $this->contentQuery->internal($this->internalState);
         }
     }
@@ -41,7 +41,7 @@ trait CMSControllerFunctions
 
         $item = $this->contentQuery->where('slug', \Str::slug($slug))->first();
 
-        if (!$item) {
+        if (! $item) {
             abort(404);
         }
 
@@ -73,7 +73,7 @@ trait CMSControllerFunctions
             'url' => $url ?: url($item->slug),
             'type' => $type,
             'image' => $image ?? \Settings::get('site_logo'),
-            'meta_keywords' => $item->meta_keywords
+            'meta_keywords' => $item->meta_keywords,
         ];
 
         $this->setSEO((object)$seoItem);
@@ -90,27 +90,27 @@ trait CMSControllerFunctions
         \Actions::do_action('pre_show_front_end_page_by_slug', $slug);
 
         if ($page = $this->isSpecialPageSlug($slug)) {
-
             return $this->{$page}($request);
         }
 
         $item = $this->contentQuery->where('slug', \Str::slug($slug))->first();
 
-        if (!$item) {
+        if (! $item) {
             abort(404);
         }
         $item = $item->toContentType();
 
-        if (!user() || !user()->hasPermissionTo('Administrations::admin.cms')) {
+        if (! user() || ! user()->hasPermissionTo('Administrations::admin.cms')) {
             if ($item->private) {
-                if (!user()) {
+                if (! user()) {
                     session()->put('url.intended', url()->current());
+
                     return redirectTo('login');
                 } else {
                     $hasRequiredSubscriptions = $this->hasRequiredSubscriptions($item);
 
 
-                    if (!$hasRequiredSubscriptions && !$item->users->contains(user())) {
+                    if (! $hasRequiredSubscriptions && ! $item->users->contains(user())) {
                         if (\Modules::isModuleActive('corals-subscriptions')) {
                             return redirectTo('subscriptions/select');
                         } else {
@@ -118,13 +118,12 @@ trait CMSControllerFunctions
                         }
                     }
                 }
-            } elseif (!$this->hasRequiredSubscriptions($item)) {
+            } elseif (! $this->hasRequiredSubscriptions($item)) {
                 abort(404);
             }
         }
 
-        if (!is_null($item->template)) {
-
+        if (! is_null($item->template)) {
             $view = 'templates.' . $item->template;
         } else {
             $view = $item->type == 'post' ? 'post' : 'templates.default';
@@ -164,8 +163,6 @@ trait CMSControllerFunctions
 
 
         return $can_access;
-
-
     }
 
     /**
@@ -224,8 +221,6 @@ trait CMSControllerFunctions
         $view = $this->view_prefix . '/news';
 
         return view($view)->with(compact('page_new', 'news', 'title', 'featured_image'));
-
-
     }
 
     /**
@@ -266,7 +261,7 @@ trait CMSControllerFunctions
 
         $pricing = $this->contentQuery->where('slug', \Str::slug($slug))->first();
 
-        if (!$pricing) {
+        if (! $pricing) {
             abort(404);
         }
 
@@ -324,13 +319,12 @@ trait CMSControllerFunctions
 
         $blog = $this->contentQuery->where('slug', \Str::slug($slug))->first();
 
-        if (!$blog) {
+        if (! $blog) {
             abort(404);
         }
 
         return $blog;
     }
-
 
     protected function getNews()
     {
@@ -340,7 +334,7 @@ trait CMSControllerFunctions
 
         $new = $this->contentQuery->where('slug', \Str::slug($slug))->first();
 
-        if (!$new) {
+        if (! $new) {
             abort(404);
         }
 
@@ -358,13 +352,12 @@ trait CMSControllerFunctions
 
         $faq = $this->contentQuery->where('slug', \Str::slug($slug))->first();
 
-        if (!$faq) {
+        if (! $faq) {
             abort(404);
         }
 
         return $faq;
     }
-
 
     /**
      * @param $posts
@@ -375,13 +368,13 @@ trait CMSControllerFunctions
     {
         $posts = $posts->published()->internal($this->internalState);
 
-        if (!user()) {
+        if (! user()) {
             $posts = $posts->public();
         }
 
         $query = strip_tags($request->get('query'));
 
-        if (!empty($query)) {
+        if (! empty($query)) {
             //TODO::use fulltext search
             $posts = $posts->where(function ($subQuery) use ($query) {
                 $subQuery->where('title', 'like', "%$query%")
@@ -405,7 +398,7 @@ trait CMSControllerFunctions
 
         $category = Category::active()->where('slug', $slug)->first();
 
-        if (!$category) {
+        if (! $category) {
             abort(404);
         }
 
@@ -440,7 +433,7 @@ trait CMSControllerFunctions
 
         $tag = Tag::active()->where('slug', $slug)->first();
 
-        if (!$tag) {
+        if (! $tag) {
             abort(404);
         }
 
@@ -484,7 +477,7 @@ trait CMSControllerFunctions
     {
         $item = Content::query()->where('slug', \Str::slug($slug))->firstOrFail();
 
-        if (!is_null($item->template)) {
+        if (! is_null($item->template)) {
             $view = 'templates.' . $item->template;
         } else {
             $view = $item->type == 'post' ? 'post' : 'templates.default';
@@ -517,22 +510,25 @@ trait CMSControllerFunctions
             'email' => 'required|email',
             'subject' => 'required',
             'message' => 'required',
-            'g-recaptcha-response' => 'required|captcha'
+            'g-recaptcha-response' => 'required|captcha',
         ]);
 
-        \Mail::send('emails.contact',
-            array(
+        \Mail::send(
+            'emails.contact',
+            [
                 'name' => $request->post('name'),
                 'email' => $request->post('email'),
                 'phone' => @$request->post('phone'),
                 'company' => @$request->post('company'),
                 'subject' => $request->post('subject'),
-                'user_message' => $request->post('message')
-            ), function ($message) use ($request) {
+                'user_message' => $request->post('message'),
+            ],
+            function ($message) use ($request) {
                 $message->to(\Settings::get('contact_form_email'), \Settings::get('site_name', 'Corals'))
                     ->replyTo($request->post('email'))
                     ->subject('Contact Submission');
-            });
+            }
+        );
 
         return \Response::json(['message' => trans('cms::labels.message.email_sent_success'), 'class' => 'alert-success', 'level' => 'success']);
     }

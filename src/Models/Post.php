@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Builder;
 
 class Post extends Content
 {
-    use HasTags, ModelHasComments;
+    use HasTags;
+    use ModelHasComments;
 
     public function getModuleName()
     {
@@ -31,11 +32,11 @@ class Post extends Content
     public $config = 'cms.models.post';
 
     protected $attributes = [
-        'type' => 'post'
+        'type' => 'post',
     ];
 
     protected $fillable = ['id', 'title', 'slug', 'meta_keywords', 'tags', 'translation_language_code',
-        'meta_description', 'content', 'published', 'published_at', 'private', 'internal', 'type', 'author_id', 'featured_image_link'];
+        'meta_description', 'content', 'published', 'published_at', 'private', 'internal', 'type', 'author_id', 'featured_image_link', ];
 
     public static function getFeedItems()
     {

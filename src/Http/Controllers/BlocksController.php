@@ -30,5 +30,4 @@ class BlocksController extends BaseController
     {
         return $dataTable->render('cms::blocks.index');
     }
-
 }

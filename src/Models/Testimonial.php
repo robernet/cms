@@ -3,12 +3,13 @@
 namespace Corals\Modules\CMS\Models;
 
 use Corals\Foundation\Traits\ModelPropertiesTrait;
-use Illuminate\Database\Eloquent\Builder;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Builder;
 
 class Testimonial extends Content
 {
-    use Sluggable, ModelPropertiesTrait;
+    use Sluggable;
+    use ModelPropertiesTrait;
 
     public function getModuleName()
     {
@@ -39,7 +40,6 @@ class Testimonial extends Content
         if ($media) {
             return $media->getFullUrl();
         } else {
-
             return asset(config($this->config . '.default_image'));
         }
     }
@@ -47,24 +47,22 @@ class Testimonial extends Content
     protected $table = 'posts';
 
     protected $attributes = [
-        'type' => 'testimonial'
+        'type' => 'testimonial',
     ];
 
     protected $casts = [
         'properties' => 'json',
     ];
 
-    public function sluggable() : array
+    public function sluggable(): array
     {
         return [
             'slug' => [
                 'source' => 'title',
-                'onUpdate' => true
-            ]
+                'onUpdate' => true,
+            ],
         ];
     }
 
     protected $fillable = ['title', 'content', 'published', 'published_at', 'type', 'properties', 'author_id'];
-
-
 }

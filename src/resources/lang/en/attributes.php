@@ -10,7 +10,7 @@ return [
         'belongs_to' => 'Belongs To',
         'post' => 'Post',
         'faq' => 'Faq',
-        'page'=>'Page',
+        'page' => 'Page',
     ],
 
     'content' => [
@@ -44,7 +44,7 @@ return [
             '4' => '4 Stars',
             '3' => '3 Stars',
             '2' => '2 Stars',
-            '1' => '1 Star'
+            '1' => '1 Star',
         ],
     ],
 
@@ -67,10 +67,10 @@ return [
     ],
     'download' => [
         'downloads_enabled' => 'Downloadable',
-        'files' => 'Files'
+        'files' => 'Files',
     ],
     'testimonial' => [
         'author' => 'Author',
-        'review' => 'Review'
-    ]
+        'review' => 'Review',
+    ],
 ];

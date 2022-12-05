@@ -2,8 +2,8 @@
 
 namespace Corals\Modules\CMS\Models;
 
-use Illuminate\Database\Eloquent\Builder;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Builder;
 
 class Download extends Content
 {
@@ -32,16 +32,16 @@ class Download extends Content
     protected $table = 'posts';
 
     protected $attributes = [
-        'type' => 'download'
+        'type' => 'download',
     ];
 
-    public function sluggable() : array
+    public function sluggable(): array
     {
         return [
             'slug' => [
                 'source' => 'title',
-                'onUpdate' => true
-            ]
+                'onUpdate' => true,
+            ],
         ];
     }
 

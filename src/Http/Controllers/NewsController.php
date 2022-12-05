@@ -121,19 +121,20 @@ class NewsController extends BaseController
                 case 'delete':
                     foreach ($selection as $selection_id) {
                         $news = News::findByHash($selection_id);
-                        $news_request = new NewsRequest;
+                        $news_request = new NewsRequest();
                         $news_request->setMethod('DELETE');
                         $this->destroy($news_request, $news);
                     }
                     $message = ['level' => 'success', 'message' => trans('Corals::messages.success.deleted', ['item' => $this->title_singular])];
+
                     break;
 
-                case 'published' :
+                case 'published':
                     foreach ($selection as $selection_id) {
                         $news = News::findByHash($selection_id);
                         if (user()->can('CMS::news.update')) {
                             $news->update([
-                                'published' => true
+                                'published' => true,
                             ]);
                             $news->save();
                             $message = ['level' => 'success', 'message' => trans('cms::messages.update_published', ['item' => $this->title_singular])];
@@ -141,14 +142,15 @@ class NewsController extends BaseController
                             $message = ['level' => 'error', 'message' => trans('cms::messages.no_permission', ['item' => $this->title_singular])];
                         }
                     }
+
                     break;
 
-                case 'draft' :
+                case 'draft':
                     foreach ($selection as $selection_id) {
                         $news = News::findByHash($selection_id);
                         if (user()->can('CMS::news.update')) {
                             $news->update([
-                                'published' => false
+                                'published' => false,
                             ]);
                             $news->save();
                             $message = ['level' => 'success', 'message' => trans('cms::messages.update_published', ['item' => $this->title_singular])];
@@ -156,10 +158,9 @@ class NewsController extends BaseController
                             $message = ['level' => 'error', 'message' => trans('cms::messages.no_permission', ['item' => $this->title_singular])];
                         }
                     }
+
                     break;
             }
-
-
         } catch (\Exception $exception) {
             log_exception($exception, News::class, 'bulkAction');
             $message = ['level' => 'error', 'message' => $exception->getMessage()];
@@ -167,7 +168,6 @@ class NewsController extends BaseController
 
         return response()->json($message);
     }
-
 
     public function destroy(NewsRequest $request, News $news)
     {

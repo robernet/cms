@@ -68,7 +68,6 @@ class CmsTables extends Migration
             $table->nullableMorphs('sourcable');
             $table->timestamps();
         });
-
     }
 
     /**

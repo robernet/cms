@@ -2,8 +2,8 @@
 
 namespace Corals\Modules\CMS\Exceptions;
 
-use Exception;
 use Corals\Modules\CMS\Classes\Feed\FeedItem;
+use Exception;
 
 class InvalidFeedItem extends Exception
 {

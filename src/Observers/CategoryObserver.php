@@ -6,7 +6,6 @@ use Corals\Modules\CMS\Models\Category;
 
 class CategoryObserver
 {
-
     /**
      * @param Category $category
      */

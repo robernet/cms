@@ -2,9 +2,9 @@
 
 namespace Corals\Modules\CMS\Classes\Feed;
 
-use Exception;
 use Carbon\Carbon;
 use Corals\Modules\CMS\Exceptions\InvalidFeedItem;
+use Exception;
 
 class FeedItem
 {

@@ -32,7 +32,7 @@ class CMSService
     {
         $category = Category::active()->where('slug', $categorySlug)->first();
 
-        if (!$category) {
+        if (! $category) {
             abort(404, 'Not Found!!');
         }
 
@@ -53,7 +53,7 @@ class CMSService
     {
         $tag = Tag::active()->where('slug', $tagSlug)->first();
 
-        if (!$tag) {
+        if (! $tag) {
             abort(404, 'Not Found!!');
         }
 
@@ -70,13 +70,13 @@ class CMSService
 
         $queryBuilder->internal($this->internalState);
 
-        if (!user()) {
+        if (! user()) {
             $queryBuilder->public();
         }
 
         $query = strip_tags($request->get('query'));
 
-        if (!empty($query)) {
+        if (! empty($query)) {
             $queryBuilder->where(function ($subQuery) use ($query) {
                 $subQuery->where('title', 'like', "%$query%")
                     ->orWhere('content', 'like', "%$query%");
@@ -129,7 +129,7 @@ class CMSService
 
         $item = $contentQuery->where('slug', \Str::slug($slug))->first();
 
-        if (!$item) {
+        if (! $item) {
             abort(404, 'Not Found!');
         }
 

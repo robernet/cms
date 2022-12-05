@@ -29,7 +29,7 @@ class BlockTransformer extends BaseTransformer
             'created_at' => format_date($block->created_at),
             'updated_at' => format_date($block->updated_at),
             'short_code' => $this->getShortcode($block),
-            'action' => $this->actions($block)
+            'action' => $this->actions($block),
         ];
 
         return parent::transformResponse($transformedArray);

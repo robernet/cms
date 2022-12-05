@@ -33,21 +33,21 @@ class FaqsTest extends TestCase
         $faq = array_rand($faqs);
 
         $this->category = Category::query()->create([
-            'name'=>'category',
-            'slug'=>'category',
-            'belongs_to'=>'faq',
+            'name' => 'category',
+            'slug' => 'category',
+            'belongs_to' => 'faq',
         ]);
         $this->assertDatabaseHas('categories', [
-            'name'=>$this->category->name,
-            'slug'=>$this->category->slug,
-            'belongs_to'=>$this->category->belongs_to,
+            'name' => $this->category->name,
+            'slug' => $this->category->slug,
+            'belongs_to' => $this->category->belongs_to,
         ]);
 
         $this->faqRequest = [
             'title' => $faqs[$faq],
-            'content'=>'<p>faq</p>',
+            'content' => '<p>faq</p>',
             'published' => random_int(0, 1),
-            'categories' => [$this->category->id]
+            'categories' => [$this->category->id],
         ];
 
         $response = $this->post('cms/faqs', $this->faqRequest);
@@ -63,7 +63,7 @@ class FaqsTest extends TestCase
 
         $this->assertDatabaseHas('posts', [
             'title' => $this->faq->title,
-            'content' =>$this->faq->content,
+            'content' => $this->faq->content,
             'published' => $this->faq->published,
         ]);
     }
@@ -87,15 +87,15 @@ class FaqsTest extends TestCase
             $published = $this->faq->published == 0 ? 1 : 0;
             $response = $this->put('cms/faqs/' . $this->faq->hashed_id, [
                 'title' => $this->faq->title,
-                'content' =>$this->faq->content,
+                'content' => $this->faq->content,
                 'published' => $published,
-                'categories' => [$this->category->id]
+                'categories' => [$this->category->id],
             ]);
 
             $response->assertRedirect('cms/faqs');
             $this->assertDatabaseHas('posts', [
                 'title' => $this->faq->title,
-                'content' =>$this->faq->content,
+                'content' => $this->faq->content,
                 'published' => $published,
             ]);
         }
@@ -115,7 +115,7 @@ class FaqsTest extends TestCase
             $this->isSoftDeletableModel(Faq::class);
             $this->assertDatabaseMissing('posts', [
                 'title' => $this->faq->title,
-                'content' =>$this->faq->content,
+                'content' => $this->faq->content,
                 'published' => $this->faq->published,
                 ]);
         }

@@ -39,14 +39,11 @@ class WidgetRequest extends BaseRequest
         }
 
         if ($this->isStore()) {
-
         }
 
         if ($this->isUpdate()) {
-
         }
 
         return $rules;
     }
-
 }

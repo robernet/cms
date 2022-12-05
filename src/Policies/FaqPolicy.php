@@ -3,8 +3,8 @@
 namespace Corals\Modules\CMS\Policies;
 
 use Corals\Foundation\Policies\BasePolicy;
-use Corals\User\Models\User;
 use Corals\Modules\CMS\Models\Faq;
+use Corals\User\Models\User;
 
 class FaqPolicy extends BasePolicy
 {
@@ -19,6 +19,7 @@ class FaqPolicy extends BasePolicy
         if ($user->can('CMS::faq.view')) {
             return true;
         }
+
         return false;
     }
 
@@ -41,6 +42,7 @@ class FaqPolicy extends BasePolicy
         if ($user->can('CMS::faq.update')) {
             return true;
         }
+
         return false;
     }
 
@@ -54,7 +56,7 @@ class FaqPolicy extends BasePolicy
         if ($user->can('CMS::faq.delete')) {
             return true;
         }
+
         return false;
     }
-
 }

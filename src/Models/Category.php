@@ -8,7 +8,8 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class Category extends BaseModel
 {
-    use PresentableTrait, LogsActivity;
+    use PresentableTrait;
+    use LogsActivity;
 
     /**
      *  Model configuration.
@@ -25,7 +26,7 @@ class Category extends BaseModel
 
     public function faqs()
     {
-        return $this->belongsToMany(Faq::class,'category_post','category_id','post_id');
+        return $this->belongsToMany(Faq::class, 'category_post', 'category_id', 'post_id');
     }
 
     public function scopeActive($query)

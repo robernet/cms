@@ -3,27 +3,27 @@
 namespace Corals\Modules\CMS;
 
 use Corals\Modules\CMS\Facades\CMS;
-use \Corals\Modules\CMS\Hooks\CMS as CMSHook;
 use Corals\Modules\CMS\Facades\OpenGraph;
 use Corals\Modules\CMS\Facades\SEOMeta;
 use Corals\Modules\CMS\Facades\SEOTools;
 use Corals\Modules\CMS\Facades\TwitterCard;
+use Corals\Modules\CMS\Hooks\CMS as CMSHook;
 use Corals\Modules\CMS\Http\Controllers\FeedController;
+use Corals\Modules\CMS\Models\Block;
 use Corals\Modules\CMS\Models\Category;
 use Corals\Modules\CMS\Models\Faq;
 use Corals\Modules\CMS\Models\News;
 use Corals\Modules\CMS\Models\Page;
 use Corals\Modules\CMS\Models\Post;
-use Corals\Modules\CMS\Models\Block;
 use Corals\Modules\CMS\Providers\CMSAuthServiceProvider;
 use Corals\Modules\CMS\Providers\CMSObserverServiceProvider;
 use Corals\Modules\CMS\Providers\CMSRouteServiceProvider;
 use Corals\Modules\CMS\Providers\SEOToolsServiceProvider;
 use Corals\Modules\Utility\Facades\Utility;
+use Corals\Settings\Facades\Modules;
 use Corals\Settings\Facades\Settings;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\View;
-use Corals\Settings\Facades\Modules;
 use Illuminate\Support\ServiceProvider;
 
 class CMSServiceProvider extends ServiceProvider
@@ -144,7 +144,6 @@ class CMSServiceProvider extends ServiceProvider
             if (view()->exists($view)) {
                 return "<?php  echo \$__env->make('$view',['block'=>'{$block}','block_key'=>'{$key}'])->render(); ?>";
             }
-
         });
     }
 

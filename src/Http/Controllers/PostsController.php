@@ -3,10 +3,10 @@
 namespace Corals\Modules\CMS\Http\Controllers;
 
 use Corals\Foundation\Http\Controllers\BaseController;
+use Corals\Foundation\Http\Requests\BulkRequest;
 use Corals\Modules\CMS\DataTables\PostsDataTable;
 use Corals\Modules\CMS\Http\Requests\PostRequest;
 use Corals\Modules\CMS\Models\Post;
-use Corals\Foundation\Http\Requests\BulkRequest;
 use Corals\Modules\CMS\Services\PostService;
 
 class PostsController extends BaseController
@@ -112,11 +112,9 @@ class PostsController extends BaseController
      * @param Post $post
      * @return \Illuminate\Http\JsonResponse
      */
-
     public function bulkAction(BulkRequest $request)
     {
         try {
-
             $action = $request->input('action');
             $selection = json_decode($request->input('selection'), true);
 
@@ -124,19 +122,20 @@ class PostsController extends BaseController
                 case 'delete':
                     foreach ($selection as $selection_id) {
                         $post = Post::findByHash($selection_id);
-                        $post_request = new PostRequest;
+                        $post_request = new PostRequest();
                         $post_request->setMethod('DELETE');
                         $this->destroy($post_request, $post);
                     }
                     $message = ['level' => 'success', 'message' => trans('Corals::messages.success.deleted', ['item' => $this->title_singular])];
+
                     break;
 
-                case 'published' :
+                case 'published':
                     foreach ($selection as $selection_id) {
                         $post = Post::findByHash($selection_id);
                         if (user()->can('CMS::post.update')) {
                             $post->update([
-                                'published' => true
+                                'published' => true,
                             ]);
                             $post->save();
                             $message = ['level' => 'success', 'message' => trans('cms::messages.update_published', ['item' => $this->title_singular])];
@@ -144,14 +143,15 @@ class PostsController extends BaseController
                             $message = ['level' => 'error', 'message' => trans('cms::messages.no_permission', ['item' => $this->title_singular])];
                         }
                     }
+
                     break;
 
-                case 'draft' :
+                case 'draft':
                     foreach ($selection as $selection_id) {
                         $post = Post::findByHash($selection_id);
                         if (user()->can('CMS::post.update')) {
                             $post->update([
-                                'published' => false
+                                'published' => false,
                             ]);
                             $post->save();
                             $message = ['level' => 'success', 'message' => trans('cms::messages.update_published', ['item' => $this->title_singular])];
@@ -159,10 +159,9 @@ class PostsController extends BaseController
                             $message = ['level' => 'error', 'message' => trans('cms::messages.no_permission', ['item' => $this->title_singular])];
                         }
                     }
+
                     break;
             }
-
-
         } catch (\Exception $exception) {
             log_exception($exception, Post::class, 'bulkAction');
             $message = ['level' => 'error', 'message' => $exception->getMessage()];
@@ -170,7 +169,6 @@ class PostsController extends BaseController
 
         return response()->json($message);
     }
-
 
     public function destroy(PostRequest $request, Post $post)
     {

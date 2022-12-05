@@ -7,10 +7,9 @@ use Corals\Modules\CMS\Traits\CMSControllerFunctions;
 
 class CMSInternalController extends BaseController
 {
+    use CMSControllerFunctions;
     public $view_prefix = '';
     public $internalState = true;
-
-    use CMSControllerFunctions;
 
     public function __construct()
     {
@@ -20,6 +19,4 @@ class CMSInternalController extends BaseController
 
         parent::__construct();
     }
-
-
 }

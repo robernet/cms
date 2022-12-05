@@ -58,13 +58,14 @@ class CategoriesDataTable extends BaseDataTable
         return [
             'delete' => ['title' => trans('Corals::labels.delete'), 'permission' => 'CMS::category.delete', 'confirmation' => trans('Corals::labels.confirmation.title')],
             'active' => ['title' => '<i class="fa fa-check-circle"></i> ' .trans('cms::attributes.widget.status_options.active'), 'permission' => 'CMS::category.update', 'confirmation' => trans('Corals::labels.confirmation.title')],
-            'inActive' => ['title' => '<i class="fa fa-check-circle-o"></i> ' .  trans('cms::attributes.widget.status_options.inactive'), 'permission' => 'CMS::category.update', 'confirmation' => trans('Corals::labels.confirmation.title')]
+            'inActive' => ['title' => '<i class="fa fa-check-circle-o"></i> ' .  trans('cms::attributes.widget.status_options.inactive'), 'permission' => 'CMS::category.update', 'confirmation' => trans('Corals::labels.confirmation.title')],
         ];
     }
 
     protected function getOptions()
     {
         $url = url(config('cms.models.category.resource_url'));
+
         return ['resource_url' => $url];
     }
 }

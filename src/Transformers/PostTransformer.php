@@ -35,7 +35,7 @@ class PostTransformer extends BaseTransformer
             'internal' => $post->internal ? '<i class="fa fa-check text-success"></i>' : '-',
             'created_at' => format_date($post->created_at),
             'updated_at' => format_date($post->updated_at),
-            'action' => $this->actions($post)
+            'action' => $this->actions($post),
         ];
 
         return parent::transformResponse($transformedArray);

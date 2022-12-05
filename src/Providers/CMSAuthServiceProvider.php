@@ -2,22 +2,22 @@
 
 namespace Corals\Modules\CMS\Providers;
 
+use Corals\Modules\CMS\Models\Block;
 use Corals\Modules\CMS\Models\Category;
 use Corals\Modules\CMS\Models\Download;
 use Corals\Modules\CMS\Models\Faq;
+use Corals\Modules\CMS\Models\News;
 use Corals\Modules\CMS\Models\Page;
 use Corals\Modules\CMS\Models\Post;
-use Corals\Modules\CMS\Models\News;
-use Corals\Modules\CMS\Models\Block;
 use Corals\Modules\CMS\Models\Testimonial;
 use Corals\Modules\CMS\Models\Widget;
+use Corals\Modules\CMS\Policies\BlockPolicy;
 use Corals\Modules\CMS\Policies\CategoryPolicy;
 use Corals\Modules\CMS\Policies\DownloadPolicy;
 use Corals\Modules\CMS\Policies\FaqPolicy;
+use Corals\Modules\CMS\Policies\NewsPolicy;
 use Corals\Modules\CMS\Policies\PagePolicy;
 use Corals\Modules\CMS\Policies\PostPolicy;
-use Corals\Modules\CMS\Policies\NewsPolicy;
-use Corals\Modules\CMS\Policies\BlockPolicy;
 use Corals\Modules\CMS\Policies\TestimonialPolicy;
 use Corals\Modules\CMS\Policies\WidgetPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -38,7 +38,7 @@ class CMSAuthServiceProvider extends ServiceProvider
         Block::class => BlockPolicy::class,
         Widget::class => WidgetPolicy::class,
         Testimonial::class => TestimonialPolicy::class,
-        Download::class => DownloadPolicy::class
+        Download::class => DownloadPolicy::class,
     ];
 
     /**

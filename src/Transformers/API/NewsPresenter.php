@@ -6,7 +6,6 @@ use Corals\Foundation\Transformers\FractalPresenter;
 
 class NewsPresenter extends FractalPresenter
 {
-
     /**
      * @return NewsTransformer
      */

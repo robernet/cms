@@ -25,9 +25,9 @@ class Page extends Content
 
 
     protected $attributes = [
-        'type' => 'page'
+        'type' => 'page',
     ];
 
     protected $fillable = ['title', 'slug', 'meta_keywords', 'translation_language_code',
-        'meta_description', 'content', 'published', 'published_at', 'private', 'internal', 'type', 'author_id', 'template', 'featured_image_link'];
+        'meta_description', 'content', 'published', 'published_at', 'private', 'internal', 'type', 'author_id', 'template', 'featured_image_link', ];
 }

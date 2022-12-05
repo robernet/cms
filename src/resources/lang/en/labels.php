@@ -11,7 +11,7 @@ return [
         'edit_designer' => 'Edit in Designer',
     ],
     'post' => [
-        'show_published_only' => 'Show Published Only'
+        'show_published_only' => 'Show Published Only',
     ],
     'message' => [
         'email_sent_success' => 'Email has been sent successfully',
@@ -49,7 +49,7 @@ return [
 
     'block' => [
         'item_empty' => 'Empty...',
-        'block_cannot_found' => 'Block [:block_key] Cannot be found'
+        'block_cannot_found' => 'Block [:block_key] Cannot be found',
     ],
 
     'widget' => [
@@ -62,7 +62,7 @@ return [
         'add_download' => 'click to add new download.',
     ],
     'testimonial' => [
-        'what_customer_says' => 'What Customer Says'
+        'what_customer_says' => 'What Customer Says',
     ],
     'template' => [
         'comments' => 'Comments (:count)',
@@ -73,6 +73,6 @@ return [
         'add_reply_text' => 'Your Reply',
         'comment_author' => 'Author',
         'add_reply' => 'Reply',
-        'cancel' => 'Cancel'
-    ]
+        'cancel' => 'Cancel',
+    ],
 ];

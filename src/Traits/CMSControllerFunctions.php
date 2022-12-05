@@ -534,6 +534,6 @@ trait CMSControllerFunctions
                     ->subject('Contact Submission');
             });
 
-        return \Response::json(['message' => trans('CMS::labels.message.email_sent_success'), 'class' => 'alert-success', 'level' => 'success']);
+        return \Response::json(['message' => trans('cms::labels.message.email_sent_success'), 'class' => 'alert-success', 'level' => 'success']);
     }
 }

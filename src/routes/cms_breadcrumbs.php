@@ -132,9 +132,9 @@ Breadcrumbs::register('block_show', function ($breadcrumbs) {
 Breadcrumbs::register(
     'widgets',
     function ($breadcrumbs, $block) {
-    $breadcrumbs->parent('blocks');
-    $breadcrumbs->push(trans('cms::module.widget.title', ['block' => $block->name]), route(config('cms.models.widget.resource_route'), ['block' => $block->hashed_id]));
-}
+        $breadcrumbs->parent('blocks');
+        $breadcrumbs->push(trans('cms::module.widget.title', ['block' => $block->name]), route(config('cms.models.widget.resource_route'), ['block' => $block->hashed_id]));
+    }
 );
 
 Breadcrumbs::register('widget_create_edit', function ($breadcrumbs, $block) {

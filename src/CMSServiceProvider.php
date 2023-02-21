@@ -38,7 +38,7 @@ class CMSServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerModulesPackages();
-        if (!\DB::table('modules')->where('code', 'corals-cms')
+        if (! \DB::table('modules')->where('code', 'corals-cms')
             ->where('installed', true)
             ->exists()) {
             return;
@@ -69,7 +69,7 @@ class CMSServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (!\DB::table('modules')->where('code', 'corals-cms')
+        if (! \DB::table('modules')->where('code', 'corals-cms')
             ->where('installed', true)
             ->exists()) {
             return;

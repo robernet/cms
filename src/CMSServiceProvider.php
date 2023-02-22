@@ -2,6 +2,7 @@
 
 namespace Corals\Modules\CMS;
 
+use Corals\Foundation\Providers\BasePackageServiceProvider;
 use Corals\Modules\CMS\Facades\CMS;
 use Corals\Modules\CMS\Facades\OpenGraph;
 use Corals\Modules\CMS\Facades\SEOMeta;
@@ -24,18 +25,24 @@ use Corals\Settings\Facades\Modules;
 use Corals\Settings\Facades\Settings;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\View;
-use Illuminate\Support\ServiceProvider;
 
-class CMSServiceProvider extends ServiceProvider
+class CMSServiceProvider extends BasePackageServiceProvider
 {
+    /**
+     * @var
+     */
     protected $defer = true;
+    /**
+     * @var
+     */
+    protected $packageCode = 'corals-cms';
 
     /**
      * Bootstrap the application events.
      *
      * @return void
      */
-    public function boot()
+    public function bootPackage()
     {
         // Load view
         $this->loadViewsFrom(__DIR__ . '/resources/views', 'cms');
@@ -53,7 +60,6 @@ class CMSServiceProvider extends ServiceProvider
         $this->registerShortcode();
 
         $this->registerFeedLinksComposer();
-        $this->registerModulesPackages();
     }
 
     /**
@@ -61,7 +67,7 @@ class CMSServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function registerPackage()
     {
         $this->mergeConfigFrom(__DIR__ . '/config/cms.php', 'cms');
         $this->mergeConfigFrom(__DIR__ . '/config/feed.php', 'feed');

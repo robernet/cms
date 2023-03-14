@@ -2,8 +2,8 @@
 
 namespace Corals\Modules\CMS\Models;
 
-use Corals\Modules\Utility\Comment\Traits\ModelHasComments;
-use Corals\Modules\Utility\Tag\Traits\HasTags;
+use Corals\Utility\Comment\Traits\ModelHasComments;
+use Corals\Utility\Tag\Traits\HasTags;
 use Illuminate\Database\Eloquent\Builder;
 
 class Post extends Content

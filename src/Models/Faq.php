@@ -2,7 +2,7 @@
 
 namespace Corals\Modules\CMS\Models;
 
-use Corals\Modules\Utility\Tag\Traits\HasTags;
+use Corals\Utility\Tag\Traits\HasTags;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Builder;
 

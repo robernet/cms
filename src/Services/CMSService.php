@@ -6,7 +6,7 @@ use Corals\Modules\CMS\Models\Category;
 use Corals\Modules\CMS\Models\Content;
 use Corals\Modules\CMS\Models\Post;
 use Corals\Modules\CMS\Transformers\API\ContentPresenter;
-use Corals\Modules\Utility\Tag\Models\Tag;
+use Corals\Utility\Tag\Models\Tag;
 
 class CMSService
 {

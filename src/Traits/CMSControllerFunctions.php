@@ -10,7 +10,7 @@ use Corals\Modules\CMS\Models\Faq;
 use Corals\Modules\CMS\Models\News;
 use Corals\Modules\CMS\Models\Post;
 use Corals\Modules\Subscriptions\Models\Product;
-use Corals\Modules\Utility\Tag\Models\Tag;
+use Corals\Utility\Tag\Models\Tag;
 use Illuminate\Http\Request;
 
 trait CMSControllerFunctions

@@ -3,7 +3,7 @@
 namespace Corals\Modules\CMS\Http\Controllers;
 
 use Corals\Modules\CMS\Models\Post;
-use Corals\Modules\Utility\Comment\Http\Controllers\CommentBaseController;
+use Corals\Utility\Comment\Http\Controllers\CommentBaseController;
 use Corals\Settings\Facades\Settings;
 
 class CommentController extends CommentBaseController

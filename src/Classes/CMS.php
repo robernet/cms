@@ -8,7 +8,7 @@ use Corals\Modules\CMS\Models\Download;
 use Corals\Modules\CMS\Models\News;
 use Corals\Modules\CMS\Models\Post;
 use Corals\Modules\CMS\Models\Testimonial;
-use Corals\Modules\Utility\Tag\Models\Tag;
+use Corals\Utility\Tag\Models\Tag;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class CMS

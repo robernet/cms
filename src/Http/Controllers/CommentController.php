@@ -3,8 +3,8 @@
 namespace Corals\Modules\CMS\Http\Controllers;
 
 use Corals\Modules\CMS\Models\Post;
-use Corals\Utility\Comment\Http\Controllers\CommentBaseController;
 use Corals\Settings\Facades\Settings;
+use Corals\Utility\Comment\Http\Controllers\CommentBaseController;
 
 class CommentController extends CommentBaseController
 {

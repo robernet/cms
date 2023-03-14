@@ -20,7 +20,7 @@ use Corals\Modules\CMS\Providers\CMSAuthServiceProvider;
 use Corals\Modules\CMS\Providers\CMSObserverServiceProvider;
 use Corals\Modules\CMS\Providers\CMSRouteServiceProvider;
 use Corals\Modules\CMS\Providers\SEOToolsServiceProvider;
-use Corals\Utility\Facades\Utility;
+use Corals\Modules\Utility\Facades\Utility;
 use Corals\Settings\Facades\Modules;
 use Corals\Settings\Facades\Settings;
 use Illuminate\Foundation\AliasLoader;

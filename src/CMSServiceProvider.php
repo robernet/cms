@@ -60,9 +60,6 @@ class CMSServiceProvider extends BasePackageServiceProvider
         $this->registerShortcode();
 
         $this->registerFeedLinksComposer();
-
-        $this->mergeConfigFrom(__DIR__ . '/config/cms.php', 'cms');
-        $this->mergeConfigFrom(__DIR__ . '/config/feed.php', 'feed');
     }
 
     /**
@@ -72,6 +69,8 @@ class CMSServiceProvider extends BasePackageServiceProvider
      */
     public function registerPackage()
     {
+        $this->mergeConfigFrom(__DIR__ . '/config/cms.php', 'cms');
+        $this->mergeConfigFrom(__DIR__ . '/config/feed.php', 'feed');
         $this->registerFeedRouteMacro();
 
         $this->app->register(CMSRouteServiceProvider::class);

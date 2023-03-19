@@ -72,7 +72,6 @@ class CMSServiceProvider extends BasePackageServiceProvider
      */
     public function registerPackage()
     {
-
         $this->registerFeedRouteMacro();
 
         $this->app->register(CMSRouteServiceProvider::class);

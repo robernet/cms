@@ -42,5 +42,8 @@
             ]
         }
     },
+    "require": {
+        "cviebrock/eloquent-sluggable": "9.0.0"
+    },
     "minimum-stability": "dev"
 }

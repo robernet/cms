@@ -4,7 +4,7 @@ namespace Corals\Modules\CMS\Classes;
 
 use Corals\Modules\CMS\Contracts\MetaTags;
 use Corals\Modules\CMS\Contracts\SEOTools as SEOContract;
-use Corals\Utility\Models\SEO\SEOItem;
+use Corals\Utility\SEO\Models\SEOItem;
 
 class SEOTools implements SEOContract
 {

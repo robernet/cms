@@ -27,10 +27,6 @@
         "phpunit/phpunit": "^9",
         "laravel/pint": "^1.0"
     },
-    "require": {
-        "corals/utility-tag": "@dev",
-        "corals/utility-seo": "@dev"
-    },
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/pest --coverage",
@@ -47,7 +43,9 @@
         }
     },
     "require": {
-        "cviebrock/eloquent-sluggable": "9.0.0"
+        "cviebrock/eloquent-sluggable": "9.0.0",
+        "corals/utility-tag": "@dev",
+        "corals/utility-seo": "@dev"
     },
     "minimum-stability": "dev"
 }

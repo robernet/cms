@@ -27,6 +27,10 @@
         "phpunit/phpunit": "^9",
         "laravel/pint": "^1.0"
     },
+    "require": {
+        "corals/utility-tag": "@dev",
+        "corals/utility-seo": "@dev"
+    },
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/pest --coverage",

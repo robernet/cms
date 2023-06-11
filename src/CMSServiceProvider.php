@@ -20,9 +20,9 @@ use Corals\Modules\CMS\Providers\CMSAuthServiceProvider;
 use Corals\Modules\CMS\Providers\CMSObserverServiceProvider;
 use Corals\Modules\CMS\Providers\CMSRouteServiceProvider;
 use Corals\Modules\CMS\Providers\SEOToolsServiceProvider;
-use Corals\Modules\Utility\Facades\Utility;
 use Corals\Settings\Facades\Modules;
 use Corals\Settings\Facades\Settings;
+use Corals\Utility\Facades\Utility;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\View;
 
@@ -44,13 +44,6 @@ class CMSServiceProvider extends BasePackageServiceProvider
      */
     public function bootPackage()
     {
-        $this->registerModulesPackages();
-        if (! \DB::table('modules')->where('code', 'corals-cms')
-            ->where('installed', true)
-            ->exists()) {
-            return;
-        };
-
         // Load view
         $this->loadViewsFrom(__DIR__ . '/resources/views', 'cms');
 
@@ -76,12 +69,6 @@ class CMSServiceProvider extends BasePackageServiceProvider
      */
     public function registerPackage()
     {
-        if (! \DB::table('modules')->where('code', 'corals-cms')
-            ->where('installed', true)
-            ->exists()) {
-            return;
-        };
-
         $this->mergeConfigFrom(__DIR__ . '/config/cms.php', 'cms');
         $this->mergeConfigFrom(__DIR__ . '/config/feed.php', 'feed');
         $this->registerFeedRouteMacro();

@@ -45,7 +45,8 @@
     "require": {
         "cviebrock/eloquent-sluggable": "9.0.0",
         "corals/utility-tag": "@dev",
-        "corals/utility-seo": "@dev"
+        "corals/utility-seo": "@dev",
+        "corals/utility-comment": "@dev"
     },
     "minimum-stability": "dev"
 }

@@ -43,10 +43,16 @@
         }
     },
     "require": {
-        "cviebrock/eloquent-sluggable": "9.0.0",
-        "corals/utility-tag": "@dev",
-        "corals/utility-seo": "@dev",
-        "corals/utility-comment": "@dev"
+        "corals/utility-comment": "^1.0",
+        "corals/utility-seo": "^1.0",
+        "corals/utility-tag": "^1.0",
+        "cviebrock/eloquent-sluggable": "^10.0.0"
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.laraship.com"
+        }
+    ],
     "minimum-stability": "dev"
 }

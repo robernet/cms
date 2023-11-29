@@ -6,7 +6,7 @@
     "description": "Manage pages, posts, news, categories, tags with Page Builder",
     "namespace": "Corals\\Modules\\CMS\\",
     "provider": "CMSServiceProvider",
-    "version": "5.0",
+    "version": "10.0.0",
     "folder": "CMS",
     "load_order": "9999",
     "autoload": "psr-4",

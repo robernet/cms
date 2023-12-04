@@ -15,8 +15,8 @@
         "corals-foundation": "^6.0",
         "corals-settings": "^5.0",
         "corals-utility": "^4.0",
-        "corals-utility-comment": "1.0",
-        "corals-utility-tag": "1.0",
-        "corals-utility-seo": "1.0"
+        "corals-utility-comment": "^10.0.0",
+        "corals-utility-tag": "^10.0.0",
+        "corals-utility-seo": "^10.0.0"
     }
 }

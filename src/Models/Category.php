@@ -4,6 +4,7 @@ namespace Corals\Modules\CMS\Models;
 
 use Corals\Foundation\Models\BaseModel;
 use Corals\Foundation\Transformers\PresentableTrait;
+use Illuminate\Database\Eloquent\Builder;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class Category extends BaseModel
@@ -18,6 +19,15 @@ class Category extends BaseModel
     public $config = 'cms.models.category';
 
     protected $guarded = ['id'];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('order', function(Builder $builder) {
+            $builder->orderBy('categories.name', 'ASC');
+        });
+    }
 
     public function posts()
     {
